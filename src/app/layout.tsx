@@ -8,7 +8,7 @@ const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin']
 
 export const metadata: Metadata = {
   title: { default: 'SMA Negeri 1 Contoh', template: '%s | SMA Negeri 1 Contoh' },
-  description: 'Website resmi SMA Negeri 1 Contoh - Sekolah unggulan dengan akreditasi A',
+  description: 'Website resmi SMA Negeri 1 Contoh - Sekolah unggulan berakreditasi A, mencetak generasi berkarakter dan berprestasi.',
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
