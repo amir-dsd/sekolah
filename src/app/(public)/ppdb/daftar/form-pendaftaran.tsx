@@ -53,7 +53,17 @@ const steps = [
   { id: 5, label: 'Jurusan' },
 ]
 
-export function FormPendaftaran({ tahunAjaran }: { tahunAjaran: string }) {
+export function FormPendaftaran({
+  tahunAjaran,
+  userId,
+  defaultNama = '',
+  defaultEmail = '',
+}: {
+  tahunAjaran: string
+  userId?: string
+  defaultNama?: string
+  defaultEmail?: string
+}) {
   const router = useRouter()
   const [step, setStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -61,7 +71,13 @@ export function FormPendaftaran({ tahunAjaran }: { tahunAjaran: string }) {
 
   const form = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: { jenis_kelamin: '', agama: '', pilihan_jurusan_1: '' },
+    defaultValues: {
+      nama_lengkap: defaultNama,
+      email: defaultEmail,
+      jenis_kelamin: '',
+      agama: '',
+      pilihan_jurusan_1: '',
+    },
   })
 
   const { register, handleSubmit, formState: { errors }, setValue, trigger, watch } = form
@@ -103,6 +119,7 @@ export function FormPendaftaran({ tahunAjaran }: { tahunAjaran: string }) {
         nomor_pendaftaran: nomorPendaftaran,
         tahun_ajaran: tahunAjaran,
         status: 'menunggu',
+        ...(userId ? { user_id: userId } : {}),
       })
 
       if (error) throw error
