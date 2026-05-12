@@ -1,25 +1,35 @@
 import { NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
+import { createAdminClient } from '@/lib/supabase/admin'
 
-const ADMIN_PASSWORD = 'dsd54321'
 const COOKIE_NAME = 'admin_session'
-const COOKIE_VALUE = 'authenticated'
 
 export async function POST(request: Request) {
-  const { password } = await request.json()
+  const { email, password } = await request.json()
 
-  if (password !== ADMIN_PASSWORD) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  if (!email || !password) {
+    return NextResponse.json({ error: 'Email dan password wajib diisi' }, { status: 400 })
   }
 
+  const supabase = createAdminClient()
+  const { data, error } = await supabase.rpc('admin_login', {
+    input_email: email,
+    input_password: password,
+  })
+
+  if (error || !data || data.length === 0) {
+    return NextResponse.json({ error: 'Email atau password salah' }, { status: 401 })
+  }
+
+  const admin = data[0]
   const cookieStore = await cookies()
-  cookieStore.set(COOKIE_NAME, COOKIE_VALUE, {
+  cookieStore.set(COOKIE_NAME, `${admin.id}|${admin.role}`, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
-    maxAge: 60 * 60 * 8, // 8 jam
+    maxAge: 60 * 60 * 8,
     path: '/',
   })
 
-  return NextResponse.json({ ok: true })
+  return NextResponse.json({ ok: true, role: admin.role, nama: admin.nama })
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Users, BookOpen, CheckCircle, Clock, XCircle, FileCheck, ArrowRight, GraduationCap } from 'lucide-react'
+import { cookies } from 'next/headers'
+import { Users, BookOpen, CheckCircle, Clock, XCircle, FileCheck, ArrowRight, GraduationCap, ShieldCheck } from 'lucide-react'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { formatDate } from '@/lib/utils'
 import { LogoutButton } from './logout-button'
@@ -41,6 +42,9 @@ const statusBadge: Record<string, string> = {
 
 export default async function AdminPage() {
   const { stats, terbaru } = await getDashboardData()
+  const cookieStore = await cookies()
+  const sessionCookie = cookieStore.get('admin_session')?.value ?? ''
+  const isSuperAdmin = sessionCookie.endsWith('|super_admin')
 
   const statCards = [
     { label: 'Total Pendaftar', val: stats.total,        icon: Users,      color: 'text-blue-600',   bg: 'bg-blue-50',   border: 'border-blue-100' },
@@ -72,6 +76,11 @@ export default async function AdminPage() {
             <Link href="/admin/pendaftar" className="hidden sm:flex text-sm text-gray-600 hover:text-blue-700 font-medium px-3 py-1.5 rounded-lg hover:bg-blue-50 transition-colors">
               Pendaftar
             </Link>
+            {isSuperAdmin && (
+              <Link href="/admin/kelola-admin" className="hidden sm:flex text-sm text-gray-600 hover:text-emerald-700 font-medium px-3 py-1.5 rounded-lg hover:bg-emerald-50 transition-colors">
+                Kelola Admin
+              </Link>
+            )}
             <LogoutButton />
           </div>
         </div>
@@ -118,6 +127,18 @@ export default async function AdminPage() {
             </div>
             <ArrowRight className="h-5 w-5 text-gray-300 group-hover:text-purple-600 group-hover:translate-x-1 transition-all" />
           </Link>
+          {isSuperAdmin && (
+            <Link href="/admin/kelola-admin" className="group bg-white rounded-2xl border border-gray-100 p-5 flex items-center gap-4 hover:shadow-md hover:border-emerald-200 transition-all">
+              <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center group-hover:bg-emerald-700 transition-colors">
+                <ShieldCheck className="h-6 w-6 text-emerald-700 group-hover:text-white transition-colors" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="font-bold text-gray-900">Kelola Admin</p>
+                <p className="text-sm text-gray-500">Tambah dan nonaktifkan akun admin</p>
+              </div>
+              <ArrowRight className="h-5 w-5 text-gray-300 group-hover:text-emerald-600 group-hover:translate-x-1 transition-all" />
+            </Link>
+          )}
         </div>
 
         {/* Recent pendaftar */}

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Eye, EyeOff, Loader2, Lock } from 'lucide-react'
+import { Eye, EyeOff, Loader2, Lock, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -10,6 +10,7 @@ import { Card, CardContent } from '@/components/ui/card'
 
 export function LoginForm() {
   const router = useRouter()
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -23,14 +24,15 @@ export function LoginForm() {
     const res = await fetch('/api/admin/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password }),
+      body: JSON.stringify({ email, password }),
     })
 
     if (res.ok) {
       router.push('/admin')
       router.refresh()
     } else {
-      setError('Password salah. Silakan coba lagi.')
+      const data = await res.json()
+      setError(data.error || 'Login gagal. Silakan coba lagi.')
       setIsLoading(false)
     }
   }
@@ -40,7 +42,23 @@ export function LoginForm() {
       <CardContent className="pt-6">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <Label htmlFor="password">Password Admin</Label>
+            <Label htmlFor="email">Email Admin</Label>
+            <div className="relative mt-1">
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="admin@sekolah.sch.id"
+                className="pl-9"
+                autoFocus
+                required
+              />
+            </div>
+          </div>
+          <div>
+            <Label htmlFor="password">Password</Label>
             <div className="relative mt-1">
               <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
               <Input
@@ -50,7 +68,7 @@ export function LoginForm() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Masukkan password"
                 className="pl-9 pr-10"
-                autoFocus
+                required
               />
               <button
                 type="button"

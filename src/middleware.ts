@@ -1,15 +1,29 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
+function getAdminSession(request: NextRequest): { id: string; role: string } | null {
+  const cookie = request.cookies.get('admin_session')
+  if (!cookie) return null
+  const parts = cookie.value.split('|')
+  if (parts.length !== 2) return null
+  return { id: parts[0], role: parts[1] }
+}
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   // Admin: cookie-based auth
   if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
-    const session = request.cookies.get('admin_session')
-    if (!session || session.value !== 'authenticated') {
+    const session = getAdminSession(request)
+    if (!session) {
       return NextResponse.redirect(new URL('/admin/login', request.url))
     }
+
+    // Kelola admin page: super_admin only
+    if (pathname.startsWith('/admin/kelola-admin') && session.role !== 'super_admin') {
+      return NextResponse.redirect(new URL('/admin', request.url))
+    }
+
     return NextResponse.next()
   }
 
