@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function StatusPage() {
   return (
-    <div className="bg-gray-50 dark:bg-slate-900 min-h-screen">
+    <div className="bg-gray-50  min-h-screen">
       <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-14">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-3">Cek Status Pendaftaran</h1>

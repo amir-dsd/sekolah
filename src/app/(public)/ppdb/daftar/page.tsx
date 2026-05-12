@@ -37,7 +37,7 @@ export default async function DaftarPage() {
   }
 
   return (
-    <div className="bg-gray-50 dark:bg-slate-900 min-h-screen">
+    <div className="bg-gray-50  min-h-screen">
       <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-10">
         <div className="container mx-auto px-4">
           <h1 className="text-2xl md:text-3xl font-bold mb-2">Formulir Pendaftaran PPDB</h1>

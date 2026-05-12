@@ -55,21 +55,21 @@ export default async function BeritaPage() {
         {pengumuman.length > 0 && (
           <div className="mb-12">
             <div className="flex items-center gap-2 mb-6">
-              <Megaphone className="h-5 w-5 text-blue-700 dark:text-blue-400" />
-              <h2 className="text-xl font-bold text-gray-900 dark:text-slate-100">Pengumuman Terbaru</h2>
+              <Megaphone className="h-5 w-5 text-blue-700 " />
+              <h2 className="text-xl font-bold text-gray-900 ">Pengumuman Terbaru</h2>
             </div>
             <div className="space-y-3">
               {pengumuman.slice(0, 3).map((berita) => (
                 <Link key={berita.id} href={`/berita/${berita.slug}`}>
-                  <div className="flex items-center gap-4 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/50 rounded-lg hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-sm transition-all">
-                    <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/40 rounded-full flex items-center justify-center shrink-0">
-                      <Megaphone className="h-4 w-4 text-blue-700 dark:text-blue-400" />
+                  <div className="flex items-center gap-4 p-4 bg-blue-50  border border-blue-100  rounded-lg hover:border-blue-300  hover:shadow-sm transition-all">
+                    <div className="w-8 h-8 bg-blue-100  rounded-full flex items-center justify-center shrink-0">
+                      <Megaphone className="h-4 w-4 text-blue-700 " />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="font-medium text-gray-900 dark:text-slate-100 truncate">{berita.judul}</p>
-                      <p className="text-xs text-gray-500 dark:text-slate-400">{formatDate(berita.created_at)}</p>
+                      <p className="font-medium text-gray-900  truncate">{berita.judul}</p>
+                      <p className="text-xs text-gray-500 ">{formatDate(berita.created_at)}</p>
                     </div>
-                    <span className="text-blue-700 dark:text-blue-400 text-sm shrink-0">Baca →</span>
+                    <span className="text-blue-700  text-sm shrink-0">Baca →</span>
                   </div>
                 </Link>
               ))}
@@ -79,7 +79,7 @@ export default async function BeritaPage() {
 
         {/* Semua Berita */}
         <div>
-          <h2 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-6">Semua Berita</h2>
+          <h2 className="text-xl font-bold text-gray-900  mb-6">Semua Berita</h2>
           {beritaList.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {beritaList.map((berita) => {
@@ -87,8 +87,8 @@ export default async function BeritaPage() {
                 const Icon = config.icon
                 return (
                   <Card key={berita.id} className="hover:shadow-md transition-shadow overflow-hidden">
-                    <div className="h-40 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 flex items-center justify-center">
-                      <Icon className="h-14 w-14 text-blue-300 dark:text-blue-700" />
+                    <div className="h-40 bg-gradient-to-br from-blue-50 to-blue-100   flex items-center justify-center">
+                      <Icon className="h-14 w-14 text-blue-300 " />
                     </div>
                     <CardHeader className="pb-2">
                       <Badge variant={config.variant} className="w-fit mb-2 capitalize">
@@ -99,10 +99,10 @@ export default async function BeritaPage() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-500 dark:text-slate-400 text-sm line-clamp-2 mb-4">{berita.ringkasan}</p>
+                      <p className="text-gray-500  text-sm line-clamp-2 mb-4">{berita.ringkasan}</p>
                       <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-400 dark:text-slate-500 text-xs">{formatDate(berita.created_at)}</span>
-                        <Link href={`/berita/${berita.slug}`} className="text-blue-700 dark:text-blue-400 hover:underline font-medium text-sm">
+                        <span className="text-gray-400  text-xs">{formatDate(berita.created_at)}</span>
+                        <Link href={`/berita/${berita.slug}`} className="text-blue-700  hover:underline font-medium text-sm">
                           Baca selengkapnya →
                         </Link>
                       </div>
@@ -112,8 +112,8 @@ export default async function BeritaPage() {
               })}
             </div>
           ) : (
-            <div className="text-center py-20 text-gray-400 dark:text-slate-500">
-              <BookOpen className="h-16 w-16 mx-auto mb-4 text-gray-200 dark:text-slate-700" />
+            <div className="text-center py-20 text-gray-400 ">
+              <BookOpen className="h-16 w-16 mx-auto mb-4 text-gray-200 " />
               <p className="text-lg">Belum ada berita tersedia.</p>
             </div>
           )}

@@ -89,7 +89,7 @@ export default function ProgramPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-white dark:bg-slate-900">
+      <section className="py-16 bg-white ">
         <div className="container mx-auto px-4">
           <div className="space-y-8">
             {programs.map(({ icon: Icon, ...program }) => (
@@ -103,33 +103,33 @@ export default function ProgramPage() {
                         </div>
                         <span className={`font-bold text-xl ${warnaText[program.warna]}`}>{program.kode}</span>
                       </div>
-                      <CardTitle className="text-xl text-gray-900 dark:text-slate-100">{program.nama}</CardTitle>
+                      <CardTitle className="text-xl text-gray-900 ">{program.nama}</CardTitle>
                     </CardHeader>
                     <CardContent className="p-0">
-                      <p className="text-gray-600 dark:text-slate-400 text-sm leading-relaxed mb-4">{program.deskripsi}</p>
+                      <p className="text-gray-600  text-sm leading-relaxed mb-4">{program.deskripsi}</p>
                       <div className="mb-3">
-                        <h4 className="text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wide mb-2">Mata Pelajaran Peminatan</h4>
+                        <h4 className="text-xs font-semibold text-gray-500  uppercase tracking-wide mb-2">Mata Pelajaran Peminatan</h4>
                         <div className="flex flex-wrap gap-2">
                           {program.mataPelajaran.map((mp) => (
-                            <span key={mp} className="text-xs bg-white dark:bg-slate-700 border dark:border-slate-600 rounded-full px-3 py-1 text-gray-700 dark:text-slate-300">{mp}</span>
+                            <span key={mp} className="text-xs bg-white  border  rounded-full px-3 py-1 text-gray-700 ">{mp}</span>
                           ))}
                         </div>
                       </div>
                     </CardContent>
                   </div>
-                  <div className="bg-white/60 dark:bg-slate-800/60 p-6 border-l border-dashed dark:border-slate-700">
+                  <div className="bg-white/60  p-6 border-l border-dashed ">
                     <div className="mb-4">
-                      <div className="text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wide mb-2 flex items-center gap-1">
+                      <div className="text-xs font-semibold text-gray-500  uppercase tracking-wide mb-2 flex items-center gap-1">
                         <Users className="h-3 w-3" /> Kuota
                       </div>
                       <div className={`text-3xl font-black ${warnaText[program.warna]}`}>{program.kuota}</div>
-                      <div className="text-xs text-gray-400 dark:text-slate-500">siswa per angkatan</div>
+                      <div className="text-xs text-gray-400 ">siswa per angkatan</div>
                     </div>
                     <div>
-                      <h4 className="text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wide mb-2">Prospek Kuliah</h4>
+                      <h4 className="text-xs font-semibold text-gray-500  uppercase tracking-wide mb-2">Prospek Kuliah</h4>
                       <ul className="space-y-1">
                         {program.prospek.map((p) => (
-                          <li key={p} className="flex items-center gap-2 text-sm text-gray-700 dark:text-slate-300">
+                          <li key={p} className="flex items-center gap-2 text-sm text-gray-700 ">
                             <CheckCircle className={`h-3.5 w-3.5 ${warnaText[program.warna]}`} />
                             {p}
                           </li>
@@ -145,17 +145,17 @@ export default function ProgramPage() {
       </section>
 
       {/* Ekstrakurikuler */}
-      <section className="bg-gray-50 dark:bg-slate-800/50 py-16">
+      <section className="bg-gray-50  py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold text-gray-900 mb-3">Ekstrakurikuler</h2>
-            <p className="text-gray-600 dark:text-slate-300">Beragam kegiatan untuk mengembangkan bakat dan minat siswa</p>
+            <p className="text-gray-600 ">Beragam kegiatan untuk mengembangkan bakat dan minat siswa</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 max-w-4xl mx-auto">
             {ekskul.map((item) => (
-              <div key={item.nama} className="bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg p-3 text-center hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-sm transition-all">
-                <div className="text-sm font-medium text-gray-800 dark:text-slate-200">{item.nama}</div>
-                <div className="text-xs text-gray-400 dark:text-slate-500 mt-1">{item.kategori}</div>
+              <div key={item.nama} className="bg-white  border  rounded-lg p-3 text-center hover:border-blue-300  hover:shadow-sm transition-all">
+                <div className="text-sm font-medium text-gray-800 ">{item.nama}</div>
+                <div className="text-xs text-gray-400  mt-1">{item.kategori}</div>
               </div>
             ))}
           </div>
@@ -163,10 +163,10 @@ export default function ProgramPage() {
       </section>
 
       {/* Jadwal */}
-      <section className="py-16 bg-white dark:bg-slate-900">
+      <section className="py-16 bg-white ">
         <div className="container mx-auto px-4 max-w-2xl">
           <div className="text-center mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-3">Jam Belajar</h2>
+            <h2 className="text-2xl font-bold text-gray-900  mb-3">Jam Belajar</h2>
           </div>
           <Card>
             <CardContent className="pt-6">
@@ -177,12 +177,12 @@ export default function ProgramPage() {
                   { hari: 'Sabtu', jam: '07.00 - 12.30 WIB (Ekskul)' },
                   { hari: 'Minggu', jam: 'Libur' },
                 ].map((item) => (
-                  <div key={item.hari} className="flex items-center justify-between py-2 border-b dark:border-slate-700 last:border-b-0">
-                    <div className="flex items-center gap-2 text-gray-700 dark:text-slate-300">
-                      <Clock className="h-4 w-4 text-blue-500 dark:text-blue-400" />
+                  <div key={item.hari} className="flex items-center justify-between py-2 border-b  last:border-b-0">
+                    <div className="flex items-center gap-2 text-gray-700 ">
+                      <Clock className="h-4 w-4 text-blue-500 " />
                       <span className="font-medium">{item.hari}</span>
                     </div>
-                    <span className="text-gray-600 dark:text-slate-400 text-sm">{item.jam}</span>
+                    <span className="text-gray-600  text-sm">{item.jam}</span>
                   </div>
                 ))}
               </div>

@@ -46,15 +46,15 @@ export default function TentangPage() {
       </section>
 
       {/* Profil Sekolah */}
-      <section className="py-16 bg-white dark:bg-slate-900">
+      <section className="py-16 bg-white ">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">Profil Sekolah</h2>
-              <p className="text-gray-600 dark:text-slate-300 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-gray-900  mb-4">Profil Sekolah</h2>
+              <p className="text-gray-600  leading-relaxed mb-4">
                 SMA Negeri 1 Contoh berdiri sejak tahun <strong>1975</strong> dan telah menjadi salah satu sekolah menengah atas terbaik di kota ini. Selama lebih dari 45 tahun, kami telah melahirkan ribuan alumni yang sukses di berbagai bidang.
               </p>
-              <p className="text-gray-600 dark:text-slate-300 leading-relaxed mb-6">
+              <p className="text-gray-600  leading-relaxed mb-6">
                 Dengan fasilitas modern, tenaga pengajar berpengalaman, dan lingkungan belajar yang kondusif, kami berkomitmen untuk memberikan pendidikan terbaik bagi setiap siswa.
               </p>
               <div className="grid grid-cols-2 gap-4">
@@ -64,36 +64,36 @@ export default function TentangPage() {
                   { label: 'Status', value: 'Negeri' },
                   { label: 'Akreditasi', value: 'A (Unggul)' },
                 ].map((item) => (
-                  <div key={item.label} className="bg-gray-50 dark:bg-slate-800 rounded-lg p-3">
-                    <div className="text-xs text-gray-500 dark:text-slate-400 mb-1">{item.label}</div>
-                    <div className="font-semibold text-gray-800 dark:text-slate-100">{item.value}</div>
+                  <div key={item.label} className="bg-gray-50  rounded-lg p-3">
+                    <div className="text-xs text-gray-500  mb-1">{item.label}</div>
+                    <div className="font-semibold text-gray-800 ">{item.value}</div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 rounded-2xl h-80 flex items-center justify-center">
-              <GraduationCap className="h-32 w-32 text-blue-400 dark:text-blue-600" />
+            <div className="bg-gradient-to-br from-blue-100 to-blue-200   rounded-2xl h-80 flex items-center justify-center">
+              <GraduationCap className="h-32 w-32 text-blue-400 " />
             </div>
           </div>
         </div>
       </section>
 
       {/* Nilai Sekolah */}
-      <section className="bg-gray-50 dark:bg-slate-800/50 py-16">
+      <section className="bg-gray-50  py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-3">Nilai-Nilai Kami</h2>
-            <p className="text-gray-600 dark:text-slate-300">Prinsip yang menjadi fondasi pendidikan di SMA Negeri 1 Contoh</p>
+            <h2 className="text-2xl font-bold text-gray-900  mb-3">Nilai-Nilai Kami</h2>
+            <p className="text-gray-600 ">Prinsip yang menjadi fondasi pendidikan di SMA Negeri 1 Contoh</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {nilaiSekolah.map(({ icon: Icon, label, deskripsi }) => (
               <Card key={label} className="text-center hover:shadow-md transition-shadow">
                 <CardContent className="pt-8 pb-6">
-                  <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon className="h-7 w-7 text-blue-700 dark:text-blue-400" />
+                  <div className="w-14 h-14 bg-blue-100  rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon className="h-7 w-7 text-blue-700 " />
                   </div>
-                  <h3 className="font-bold text-gray-900 dark:text-slate-100 mb-2">{label}</h3>
-                  <p className="text-gray-600 dark:text-slate-400 text-sm">{deskripsi}</p>
+                  <h3 className="font-bold text-gray-900  mb-2">{label}</h3>
+                  <p className="text-gray-600  text-sm">{deskripsi}</p>
                 </CardContent>
               </Card>
             ))}
@@ -102,22 +102,22 @@ export default function TentangPage() {
       </section>
 
       {/* Struktur Organisasi */}
-      <section className="py-16 bg-white dark:bg-slate-900">
+      <section className="py-16 bg-white ">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-3">Struktur Organisasi</h2>
-            <p className="text-gray-600 dark:text-slate-300">Tim kepemimpinan SMA Negeri 1 Contoh periode 2024/2025</p>
+            <h2 className="text-2xl font-bold text-gray-900  mb-3">Struktur Organisasi</h2>
+            <p className="text-gray-600 ">Tim kepemimpinan SMA Negeri 1 Contoh periode 2024/2025</p>
           </div>
           <div className="max-w-3xl mx-auto">
             <div className="grid gap-3">
               {strukturOrganisasi.map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:border-blue-300 dark:hover:border-blue-600 transition-colors"
+                  className="flex items-center justify-between p-4 bg-white  border  rounded-lg hover:border-blue-300  transition-colors"
                 >
                   <div>
-                    <div className="text-sm text-gray-500 dark:text-slate-400">{item.jabatan}</div>
-                    <div className="font-semibold text-gray-800 dark:text-slate-100">{item.nama}</div>
+                    <div className="text-sm text-gray-500 ">{item.jabatan}</div>
+                    <div className="font-semibold text-gray-800 ">{item.nama}</div>
                   </div>
                   {i === 0 && (
                     <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-medium">

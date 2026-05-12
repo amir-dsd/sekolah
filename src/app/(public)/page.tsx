@@ -109,16 +109,16 @@ export default async function HomePage() {
       </section>
 
       {/* Stats */}
-      <section className="bg-white dark:bg-slate-900 border-b dark:border-slate-800">
+      <section className="bg-white  border-b ">
         <div className="container mx-auto px-4 py-10">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map(({ icon: Icon, label, value }) => (
               <div key={label} className="flex flex-col items-center text-center p-4">
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mb-3">
-                  <Icon className="h-6 w-6 text-blue-700 dark:text-blue-400" />
+                <div className="w-12 h-12 bg-blue-100  rounded-full flex items-center justify-center mb-3">
+                  <Icon className="h-6 w-6 text-blue-700 " />
                 </div>
-                <div className="text-3xl font-bold text-blue-900 dark:text-blue-300">{value}</div>
-                <div className="text-sm text-gray-500 dark:text-slate-400 mt-1">{label}</div>
+                <div className="text-3xl font-bold text-blue-900 ">{value}</div>
+                <div className="text-sm text-gray-500  mt-1">{label}</div>
               </div>
             ))}
           </div>
@@ -127,7 +127,7 @@ export default async function HomePage() {
 
       {/* PPDB Banner */}
       {ppdb && (
-        <section className="bg-yellow-50 dark:bg-yellow-900/10 border-y border-yellow-200 dark:border-yellow-800/50">
+        <section className="bg-yellow-50  border-y border-yellow-200 ">
           <div className="container mx-auto px-4 py-8">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-4">
@@ -135,10 +135,10 @@ export default async function HomePage() {
                   <Calendar className="h-6 w-6 text-yellow-900" />
                 </div>
                 <div>
-                  <h2 className="font-bold text-lg text-gray-900 dark:text-slate-100">
+                  <h2 className="font-bold text-lg text-gray-900 ">
                     PPDB {ppdb.tahun_ajaran} — Pendaftaran Dibuka!
                   </h2>
-                  <p className="text-gray-600 dark:text-slate-400 text-sm">
+                  <p className="text-gray-600  text-sm">
                     {formatDate(ppdb.tanggal_mulai)} s/d {formatDate(ppdb.tanggal_selesai)} · Kuota: {ppdb.kuota} siswa
                   </p>
                 </div>
@@ -157,29 +157,29 @@ export default async function HomePage() {
       )}
 
       {/* Visi Misi */}
-      <section className="bg-gray-50 dark:bg-slate-800/50 py-16">
+      <section className="bg-gray-50  py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-slate-100 mb-3">Visi & Misi</h2>
-            <p className="text-gray-600 dark:text-slate-400">Landasan kami dalam mendidik generasi penerus bangsa</p>
+            <h2 className="text-3xl font-bold text-gray-900  mb-3">Visi & Misi</h2>
+            <p className="text-gray-600 ">Landasan kami dalam mendidik generasi penerus bangsa</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Card className="border-l-4 border-l-blue-700">
               <CardHeader>
-                <CardTitle className="text-blue-700 dark:text-blue-400 text-xl">Visi</CardTitle>
+                <CardTitle className="text-blue-700  text-xl">Visi</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 dark:text-slate-300 leading-relaxed">
+                <p className="text-gray-700  leading-relaxed">
                   Menjadi sekolah unggul yang menghasilkan lulusan beriman, berilmu, berkarakter, dan berdaya saing di tingkat nasional maupun internasional.
                 </p>
               </CardContent>
             </Card>
             <Card className="border-l-4 border-l-green-600">
               <CardHeader>
-                <CardTitle className="text-green-700 dark:text-green-400 text-xl">Misi</CardTitle>
+                <CardTitle className="text-green-700  text-xl">Misi</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-gray-700 dark:text-slate-300 text-sm">
+                <ul className="space-y-2 text-gray-700  text-sm">
                   {[
                     'Menyelenggarakan pembelajaran berkualitas dan inovatif',
                     'Mengembangkan potensi akademik dan non-akademik siswa',
@@ -187,7 +187,7 @@ export default async function HomePage() {
                     'Membangun kemitraan dengan orang tua dan masyarakat',
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="w-5 h-5 bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
+                      <span className="w-5 h-5 bg-green-100  text-green-700  rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
                       {item}
                     </li>
                   ))}
@@ -199,12 +199,12 @@ export default async function HomePage() {
       </section>
 
       {/* Program Studi */}
-      <section className="py-16 bg-white dark:bg-slate-900">
+      <section className="py-16 bg-white ">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-10">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-slate-100 mb-2">Program Studi</h2>
-              <p className="text-gray-600 dark:text-slate-400">Pilih jurusan sesuai minat dan bakat Anda</p>
+              <h2 className="text-3xl font-bold text-gray-900  mb-2">Program Studi</h2>
+              <p className="text-gray-600 ">Pilih jurusan sesuai minat dan bakat Anda</p>
             </div>
             <Button asChild variant="outline" className="hidden md:flex">
               <Link href="/program">Lihat Semua <ChevronRight className="ml-1 h-4 w-4" /></Link>
@@ -220,7 +220,7 @@ export default async function HomePage() {
                   <CardTitle className="text-lg mt-2">{program.nama}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 dark:text-slate-400 text-sm leading-relaxed">{program.deskripsi}</p>
+                  <p className="text-gray-600  text-sm leading-relaxed">{program.deskripsi}</p>
                 </CardContent>
               </Card>
             ))}
@@ -229,12 +229,12 @@ export default async function HomePage() {
       </section>
 
       {/* Berita Terbaru */}
-      <section className="bg-gray-50 dark:bg-slate-800/50 py-16">
+      <section className="bg-gray-50  py-16">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-10">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-slate-100 mb-2">Berita & Pengumuman</h2>
-              <p className="text-gray-600 dark:text-slate-400">Informasi terkini dari sekolah kami</p>
+              <h2 className="text-3xl font-bold text-gray-900  mb-2">Berita & Pengumuman</h2>
+              <p className="text-gray-600 ">Informasi terkini dari sekolah kami</p>
             </div>
             <Button asChild variant="outline" className="hidden md:flex">
               <Link href="/berita">Lihat Semua <ChevronRight className="ml-1 h-4 w-4" /></Link>
@@ -244,7 +244,7 @@ export default async function HomePage() {
             <div className="grid md:grid-cols-3 gap-6">
               {beritaList.map((berita) => (
                 <Card key={berita.id} className="hover:shadow-md transition-shadow overflow-hidden">
-                  <div className="h-40 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 flex items-center justify-center">
+                  <div className="h-40 bg-gradient-to-br from-blue-100 to-blue-200   flex items-center justify-center">
                     <BookOpen className="h-12 w-12 text-blue-400" />
                   </div>
                   <CardHeader className="pb-2">
@@ -256,9 +256,9 @@ export default async function HomePage() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-600 dark:text-slate-400 text-sm line-clamp-2 mb-3">{berita.ringkasan}</p>
+                    <p className="text-gray-600  text-sm line-clamp-2 mb-3">{berita.ringkasan}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-gray-400 dark:text-slate-500">{formatDate(berita.created_at)}</span>
+                      <span className="text-xs text-gray-400 ">{formatDate(berita.created_at)}</span>
                       <Link href={`/berita/${berita.slug}`} className="text-sm text-blue-700 hover:underline font-medium">
                         Baca →
                       </Link>
@@ -268,8 +268,8 @@ export default async function HomePage() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-12 text-gray-500 dark:text-slate-400">
-              <BookOpen className="h-12 w-12 mx-auto mb-3 text-gray-300 dark:text-slate-600" />
+            <div className="text-center py-12 text-gray-500 ">
+              <BookOpen className="h-12 w-12 mx-auto mb-3 text-gray-300 " />
               <p>Belum ada berita tersedia.</p>
             </div>
           )}

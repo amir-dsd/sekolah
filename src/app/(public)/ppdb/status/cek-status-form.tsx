@@ -124,29 +124,29 @@ export function CekStatusForm() {
           <CardContent className="space-y-5">
             {/* Status Banner */}
             <div className={`p-4 rounded-xl border-2 ${
-              result.status === 'diterima' ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800/50' :
-              result.status === 'ditolak' ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800/50' :
-              result.status === 'diverifikasi' ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800/50' :
-              'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-800/50'
+              result.status === 'diterima' ? 'bg-green-50  border-green-200 ' :
+              result.status === 'ditolak' ? 'bg-red-50  border-red-200 ' :
+              result.status === 'diverifikasi' ? 'bg-blue-50  border-blue-200 ' :
+              'bg-yellow-50  border-yellow-200 '
             }`}>
               <div className="flex items-center gap-3 mb-2">
                 <StatusIcon className={`h-8 w-8 ${config.warna}`} />
                 <div>
                   <Badge variant={config.variant} className="mb-1">{config.label}</Badge>
-                  <p className="text-sm text-gray-600 dark:text-slate-400">{config.deskripsi}</p>
+                  <p className="text-sm text-gray-600 ">{config.deskripsi}</p>
                 </div>
               </div>
               {result.catatan_admin && (
-                <div className="mt-3 p-3 bg-white/60 dark:bg-slate-800/60 rounded-lg text-sm">
-                  <span className="font-medium text-gray-700 dark:text-slate-300">Catatan Admin: </span>
-                  <span className="text-gray-600 dark:text-slate-400">{result.catatan_admin}</span>
+                <div className="mt-3 p-3 bg-white/60  rounded-lg text-sm">
+                  <span className="font-medium text-gray-700 ">Catatan Admin: </span>
+                  <span className="text-gray-600 ">{result.catatan_admin}</span>
                 </div>
               )}
             </div>
 
             {/* Data Pendaftar */}
             <div>
-              <h3 className="font-semibold text-gray-800 dark:text-slate-200 mb-3 text-sm uppercase tracking-wide">Data Pendaftar</h3>
+              <h3 className="font-semibold text-gray-800  mb-3 text-sm uppercase tracking-wide">Data Pendaftar</h3>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
                   { label: 'Nomor Pendaftaran', value: result.nomor_pendaftaran },
@@ -158,9 +158,9 @@ export function CekStatusForm() {
                   { label: 'Tanggal Daftar', value: formatDate(result.created_at) },
                   { label: 'Terakhir Diperbarui', value: formatDate(result.updated_at) },
                 ].map((item) => (
-                  <div key={item.label} className="bg-gray-50 dark:bg-slate-800 rounded-lg p-3">
-                    <div className="text-xs text-gray-500 dark:text-slate-400 mb-0.5">{item.label}</div>
-                    <div className="font-medium text-gray-800 dark:text-slate-200 text-sm">{item.value}</div>
+                  <div key={item.label} className="bg-gray-50  rounded-lg p-3">
+                    <div className="text-xs text-gray-500  mb-0.5">{item.label}</div>
+                    <div className="font-medium text-gray-800  text-sm">{item.value}</div>
                   </div>
                 ))}
               </div>
@@ -169,9 +169,9 @@ export function CekStatusForm() {
         </Card>
       )}
 
-      <Card className="bg-blue-50 dark:bg-blue-900/20 border-blue-100 dark:border-blue-800/50">
+      <Card className="bg-blue-50  border-blue-100 ">
         <CardContent className="pt-5 pb-4">
-          <p className="text-sm text-blue-700 dark:text-blue-300">
+          <p className="text-sm text-blue-700 ">
             <strong>Butuh bantuan?</strong> Hubungi panitia PPDB di nomor <strong>(021) 1234-5678</strong> atau email <strong>ppdb@sman1contoh.sch.id</strong>
           </p>
         </CardContent>

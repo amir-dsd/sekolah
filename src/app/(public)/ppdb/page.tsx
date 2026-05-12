@@ -88,49 +88,49 @@ export default async function PPDBPage() {
       {ppdb ? (
         <>
           {/* Info PPDB */}
-          <section className="py-10 border-b dark:border-slate-800">
+          <section className="py-10 border-b ">
             <div className="container mx-auto px-4">
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <Card className="border-blue-200 dark:border-blue-800/50 bg-blue-50 dark:bg-blue-900/20">
+                <Card className="border-blue-200  bg-blue-50 ">
                   <CardContent className="pt-5 pb-4">
                     <div className="flex items-center gap-3">
-                      <Calendar className="h-8 w-8 text-blue-600 dark:text-blue-400 shrink-0" />
+                      <Calendar className="h-8 w-8 text-blue-600  shrink-0" />
                       <div>
-                        <div className="text-xs text-blue-500 dark:text-blue-400 font-medium">Tahun Ajaran</div>
-                        <div className="font-bold text-gray-900 dark:text-slate-100">{ppdb.tahun_ajaran}</div>
+                        <div className="text-xs text-blue-500  font-medium">Tahun Ajaran</div>
+                        <div className="font-bold text-gray-900 ">{ppdb.tahun_ajaran}</div>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
-                <Card className="border-green-200 dark:border-green-800/50 bg-green-50 dark:bg-green-900/20">
+                <Card className="border-green-200  bg-green-50 ">
                   <CardContent className="pt-5 pb-4">
                     <div className="flex items-center gap-3">
-                      <Clock className="h-8 w-8 text-green-600 dark:text-green-400 shrink-0" />
+                      <Clock className="h-8 w-8 text-green-600  shrink-0" />
                       <div>
-                        <div className="text-xs text-green-500 dark:text-green-400 font-medium">Periode Pendaftaran</div>
-                        <div className="font-bold text-gray-900 dark:text-slate-100 text-sm">{formatDate(ppdb.tanggal_mulai)} — {formatDate(ppdb.tanggal_selesai)}</div>
+                        <div className="text-xs text-green-500  font-medium">Periode Pendaftaran</div>
+                        <div className="font-bold text-gray-900  text-sm">{formatDate(ppdb.tanggal_mulai)} — {formatDate(ppdb.tanggal_selesai)}</div>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
-                <Card className="border-yellow-200 dark:border-yellow-800/50 bg-yellow-50 dark:bg-yellow-900/20">
+                <Card className="border-yellow-200  bg-yellow-50 ">
                   <CardContent className="pt-5 pb-4">
                     <div className="flex items-center gap-3">
-                      <Users className="h-8 w-8 text-yellow-600 dark:text-yellow-400 shrink-0" />
+                      <Users className="h-8 w-8 text-yellow-600  shrink-0" />
                       <div>
-                        <div className="text-xs text-yellow-500 dark:text-yellow-400 font-medium">Sisa Kuota</div>
-                        <div className="font-bold text-gray-900 dark:text-slate-100">{sisaKuota} dari {ppdb.kuota} siswa</div>
+                        <div className="text-xs text-yellow-500  font-medium">Sisa Kuota</div>
+                        <div className="font-bold text-gray-900 ">{sisaKuota} dari {ppdb.kuota} siswa</div>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
-                <Card className="border-purple-200 dark:border-purple-800/50 bg-purple-50 dark:bg-purple-900/20">
+                <Card className="border-purple-200  bg-purple-50 ">
                   <CardContent className="pt-5 pb-4">
                     <div className="flex items-center gap-3">
-                      <FileText className="h-8 w-8 text-purple-600 dark:text-purple-400 shrink-0" />
+                      <FileText className="h-8 w-8 text-purple-600  shrink-0" />
                       <div>
-                        <div className="text-xs text-purple-500 dark:text-purple-400 font-medium">Biaya Pendaftaran</div>
-                        <div className="font-bold text-gray-900 dark:text-slate-100">{ppdb.biaya_pendaftaran === 0 ? 'Gratis' : formatCurrency(ppdb.biaya_pendaftaran)}</div>
+                        <div className="text-xs text-purple-500  font-medium">Biaya Pendaftaran</div>
+                        <div className="font-bold text-gray-900 ">{ppdb.biaya_pendaftaran === 0 ? 'Gratis' : formatCurrency(ppdb.biaya_pendaftaran)}</div>
                       </div>
                     </div>
                   </CardContent>
@@ -151,33 +151,33 @@ export default async function PPDBPage() {
           </section>
         </>
       ) : (
-        <section className="py-10 bg-gray-50 dark:bg-slate-800/50">
+        <section className="py-10 bg-gray-50 ">
           <div className="container mx-auto px-4 text-center">
-            <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800/50 rounded-xl p-8 max-w-lg mx-auto">
+            <div className="bg-yellow-50  border border-yellow-200  rounded-xl p-8 max-w-lg mx-auto">
               <Clock className="h-12 w-12 text-yellow-500 mx-auto mb-3" />
-              <h2 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-2">PPDB Belum Dibuka</h2>
-              <p className="text-gray-600 dark:text-slate-400">Pendaftaran siswa baru belum dibuka saat ini. Pantau terus website kami untuk informasi terbaru.</p>
+              <h2 className="text-xl font-bold text-gray-900  mb-2">PPDB Belum Dibuka</h2>
+              <p className="text-gray-600 ">Pendaftaran siswa baru belum dibuka saat ini. Pantau terus website kami untuk informasi terbaru.</p>
             </div>
           </div>
         </section>
       )}
 
       {/* Alur Pendaftaran */}
-      <section className="py-16 bg-gray-50 dark:bg-slate-800/50">
+      <section className="py-16 bg-gray-50 ">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-3">Alur Pendaftaran</h2>
-            <p className="text-gray-600 dark:text-slate-400">Ikuti langkah-langkah berikut untuk mendaftar</p>
+            <h2 className="text-2xl font-bold text-gray-900  mb-3">Alur Pendaftaran</h2>
+            <p className="text-gray-600 ">Ikuti langkah-langkah berikut untuk mendaftar</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
             {alurPendaftaran.map((item) => (
-              <div key={item.step} className="flex gap-4 bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700 hover:shadow-sm transition-shadow">
+              <div key={item.step} className="flex gap-4 bg-white  p-5 rounded-xl border  hover:shadow-sm transition-shadow">
                 <div className="w-10 h-10 bg-blue-700 text-white rounded-full flex items-center justify-center font-bold text-lg shrink-0">
                   {item.step}
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-slate-100 mb-1">{item.judul}</h3>
-                  <p className="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">{item.deskripsi}</p>
+                  <h3 className="font-semibold text-gray-900  mb-1">{item.judul}</h3>
+                  <p className="text-sm text-gray-500  leading-relaxed">{item.deskripsi}</p>
                 </div>
               </div>
             ))}
@@ -186,36 +186,36 @@ export default async function PPDBPage() {
       </section>
 
       {/* Persyaratan & Dokumen */}
-      <section className="py-16 bg-white dark:bg-slate-900">
+      <section className="py-16 bg-white ">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">Persyaratan</h2>
+              <h2 className="text-2xl font-bold text-gray-900  mb-6">Persyaratan</h2>
               <ul className="space-y-3">
                 {persyaratan.map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
-                    <span className="text-gray-700 dark:text-slate-300">{item}</span>
+                    <span className="text-gray-700 ">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">Dokumen yang Diperlukan</h2>
+              <h2 className="text-2xl font-bold text-gray-900  mb-6">Dokumen yang Diperlukan</h2>
               <div className="space-y-3">
                 {dokumenDibutuhkan.map((dok, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3 bg-gray-50 dark:bg-slate-800 rounded-lg">
-                    <FileText className={`h-5 w-5 shrink-0 mt-0.5 ${dok.wajib ? 'text-blue-600 dark:text-blue-400' : 'text-gray-400 dark:text-slate-500'}`} />
+                  <div key={i} className="flex items-start gap-3 p-3 bg-gray-50  rounded-lg">
+                    <FileText className={`h-5 w-5 shrink-0 mt-0.5 ${dok.wajib ? 'text-blue-600 ' : 'text-gray-400 '}`} />
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-medium text-gray-800 dark:text-slate-200 text-sm">{dok.nama}</span>
+                        <span className="font-medium text-gray-800  text-sm">{dok.nama}</span>
                         {dok.wajib ? (
-                          <span className="text-xs bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-1.5 py-0.5 rounded">Wajib</span>
+                          <span className="text-xs bg-red-100  text-red-600  px-1.5 py-0.5 rounded">Wajib</span>
                         ) : (
-                          <span className="text-xs bg-gray-100 dark:bg-slate-700 text-gray-500 dark:text-slate-400 px-1.5 py-0.5 rounded">Opsional</span>
+                          <span className="text-xs bg-gray-100  text-gray-500  px-1.5 py-0.5 rounded">Opsional</span>
                         )}
                       </div>
-                      <p className="text-xs text-gray-500 dark:text-slate-400">{dok.keterangan}</p>
+                      <p className="text-xs text-gray-500 ">{dok.keterangan}</p>
                     </div>
                   </div>
                 ))}

@@ -120,12 +120,12 @@ export function FormPendaftaran({ tahunAjaran }: { tahunAjaran: string }) {
       <Card className="text-center py-12">
         <CardContent>
           <CheckCircle className="h-20 w-20 text-green-500 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-2">Pendaftaran Berhasil!</h2>
-          <p className="text-gray-600 dark:text-slate-400 mb-4">Nomor pendaftaran Anda adalah:</p>
-          <div className="bg-blue-50 dark:bg-blue-900/30 border-2 border-blue-200 dark:border-blue-700 rounded-xl px-8 py-4 inline-block mb-6">
-            <span className="text-2xl font-black text-blue-700 dark:text-blue-400 tracking-wider">{submitResult.nomor}</span>
+          <h2 className="text-2xl font-bold text-gray-900  mb-2">Pendaftaran Berhasil!</h2>
+          <p className="text-gray-600  mb-4">Nomor pendaftaran Anda adalah:</p>
+          <div className="bg-blue-50  border-2 border-blue-200  rounded-xl px-8 py-4 inline-block mb-6">
+            <span className="text-2xl font-black text-blue-700  tracking-wider">{submitResult.nomor}</span>
           </div>
-          <p className="text-gray-500 dark:text-slate-400 text-sm mb-8 max-w-md mx-auto">
+          <p className="text-gray-500  text-sm mb-8 max-w-md mx-auto">
             Simpan nomor pendaftaran ini. Gunakan nomor tersebut untuk memantau status pendaftaran Anda.
           </p>
           <div className="flex gap-3 justify-center">
@@ -168,7 +168,7 @@ export function FormPendaftaran({ tahunAjaran }: { tahunAjaran: string }) {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg text-blue-800 dark:text-blue-400">
+          <CardTitle className="text-lg text-blue-800 ">
             Langkah {step}: {steps[step - 1].label}
           </CardTitle>
         </CardHeader>
@@ -308,7 +308,7 @@ export function FormPendaftaran({ tahunAjaran }: { tahunAjaran: string }) {
           {step === 4 && (
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold text-gray-800 dark:text-slate-200 mb-3 pb-2 border-b dark:border-slate-700">Data Ayah</h3>
+                <h3 className="font-semibold text-gray-800  mb-3 pb-2 border-b ">Data Ayah</h3>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="nama_ayah">Nama Ayah <span className="text-red-500">*</span></Label>
@@ -322,7 +322,7 @@ export function FormPendaftaran({ tahunAjaran }: { tahunAjaran: string }) {
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-800 dark:text-slate-200 mb-3 pb-2 border-b dark:border-slate-700">Data Ibu</h3>
+                <h3 className="font-semibold text-gray-800  mb-3 pb-2 border-b ">Data Ibu</h3>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="nama_ibu">Nama Ibu <span className="text-red-500">*</span></Label>
@@ -363,7 +363,7 @@ export function FormPendaftaran({ tahunAjaran }: { tahunAjaran: string }) {
           {/* Step 5: Pilihan Jurusan */}
           {step === 5 && (
             <div className="space-y-5">
-              <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/50 rounded-lg p-4 text-sm text-blue-700 dark:text-blue-300">
+              <div className="bg-blue-50  border border-blue-100  rounded-lg p-4 text-sm text-blue-700 ">
                 Pilih jurusan sesuai minat dan kemampuan. Jika pilihan pertama penuh, sistem akan mempertimbangkan pilihan kedua.
               </div>
               <div>
@@ -395,18 +395,18 @@ export function FormPendaftaran({ tahunAjaran }: { tahunAjaran: string }) {
               </div>
 
               {/* Ringkasan */}
-              <div className="mt-6 p-4 bg-gray-50 dark:bg-slate-800 rounded-lg border dark:border-slate-700">
-                <h3 className="font-semibold text-gray-800 dark:text-slate-200 mb-2">Ringkasan Data</h3>
+              <div className="mt-6 p-4 bg-gray-50  rounded-lg border ">
+                <h3 className="font-semibold text-gray-800  mb-2">Ringkasan Data</h3>
                 <div className="grid sm:grid-cols-2 gap-2 text-sm">
-                  <div><span className="text-gray-500 dark:text-slate-400">Nama:</span> <span className="font-medium dark:text-slate-200">{watch('nama_lengkap') || '-'}</span></div>
-                  <div><span className="text-gray-500 dark:text-slate-400">NIK:</span> <span className="font-medium dark:text-slate-200">{watch('nik') || '-'}</span></div>
-                  <div><span className="text-gray-500 dark:text-slate-400">Asal Sekolah:</span> <span className="font-medium dark:text-slate-200">{watch('asal_sekolah') || '-'}</span></div>
-                  <div><span className="text-gray-500 dark:text-slate-400">Email:</span> <span className="font-medium dark:text-slate-200">{watch('email') || '-'}</span></div>
+                  <div><span className="text-gray-500 ">Nama:</span> <span className="font-medium ">{watch('nama_lengkap') || '-'}</span></div>
+                  <div><span className="text-gray-500 ">NIK:</span> <span className="font-medium ">{watch('nik') || '-'}</span></div>
+                  <div><span className="text-gray-500 ">Asal Sekolah:</span> <span className="font-medium ">{watch('asal_sekolah') || '-'}</span></div>
+                  <div><span className="text-gray-500 ">Email:</span> <span className="font-medium ">{watch('email') || '-'}</span></div>
                 </div>
               </div>
 
               {submitResult?.error && (
-                <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50 rounded-lg text-red-700 dark:text-red-400 text-sm">
+                <div className="p-3 bg-red-50  border border-red-200  rounded-lg text-red-700  text-sm">
                   {submitResult.error}
                 </div>
               )}
