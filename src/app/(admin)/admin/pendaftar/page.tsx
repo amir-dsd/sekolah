@@ -6,6 +6,7 @@ import { formatDate } from '@/lib/utils'
 import { UpdateStatusForm } from './update-status-form'
 import type { Pendaftaran, StatusPendaftaran } from '@/types'
 
+export const dynamic = 'force-dynamic'
 export const metadata: Metadata = { title: 'Kelola Pendaftar PPDB' }
 
 async function getAllPendaftar(): Promise<Pendaftaran[]> {

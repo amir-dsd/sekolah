@@ -8,6 +8,7 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { formatDate } from '@/lib/utils'
 import type { Berita } from '@/types'
 
+export const dynamic = 'force-dynamic'
 export const metadata: Metadata = { title: 'Kelola Berita' }
 
 async function getAllBerita(): Promise<Berita[]> {
