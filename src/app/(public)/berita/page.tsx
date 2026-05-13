@@ -9,7 +9,7 @@ import type { Berita, KategoriBerita } from '@/types'
 
 export const metadata: Metadata = {
   title: 'Berita & Pengumuman',
-  description: 'Informasi terkini dari SMA Negeri 1 Contoh',
+  description: 'Informasi terkini dari Haya Bina Insani',
 }
 
 async function getAllBerita(): Promise<Berita[]> {
@@ -46,7 +46,7 @@ export default async function BeritaPage() {
             <BookOpen className="h-8 w-8" />
             <h1 className="text-3xl md:text-4xl font-bold">Berita & Pengumuman</h1>
           </div>
-          <p className="text-blue-100 text-lg">Informasi terkini dari SMA Negeri 1 Contoh</p>
+          <p className="text-blue-100 text-lg">Informasi terkini dari Haya Bina Insani</p>
         </div>
       </section>
 

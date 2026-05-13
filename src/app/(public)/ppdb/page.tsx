@@ -9,7 +9,7 @@ import type { PengaturanPPDB } from '@/types'
 
 export const metadata: Metadata = {
   title: 'PPDB - Penerimaan Peserta Didik Baru',
-  description: 'Informasi pendaftaran siswa baru SMA Negeri 1 Contoh',
+  description: 'Informasi pendaftaran siswa baru Haya Bina Insani',
 }
 
 async function getPPDB(): Promise<PengaturanPPDB | null> {
@@ -80,7 +80,7 @@ export default async function PPDBPage() {
         <div className="container mx-auto px-4">
           <h1 className="text-3xl md:text-4xl font-bold mb-3">PPDB Online</h1>
           <p className="text-blue-100 text-lg max-w-2xl">
-            Penerimaan Peserta Didik Baru SMA Negeri 1 Contoh — Daftar sekarang dan raih masa depan terbaik Anda.
+            Penerimaan Peserta Didik Baru Haya Bina Insani — Daftar sekarang dan raih masa depan terbaik Anda.
           </p>
         </div>
       </section>
@@ -230,7 +230,7 @@ export default async function PPDBPage() {
         <section className="bg-blue-900 text-white py-12">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-2xl font-bold mb-3">Siap Mendaftar?</h2>
-            <p className="text-blue-200 mb-6">Jangan lewatkan kesempatan bergabung bersama SMA Negeri 1 Contoh</p>
+            <p className="text-blue-200 mb-6">Jangan lewatkan kesempatan bergabung bersama Haya Bina Insani</p>
             <Button asChild size="lg" className="bg-yellow-400 text-blue-900 hover:bg-yellow-300 font-bold">
               <Link href="/ppdb/daftar">
                 Mulai Pendaftaran <ArrowRight className="ml-2 h-5 w-5" />

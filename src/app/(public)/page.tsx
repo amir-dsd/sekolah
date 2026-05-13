@@ -78,31 +78,51 @@ export default async function HomePage() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-700/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
 
-        <div className="container mx-auto px-4 py-20 sm:py-28 relative">
-          <div className="max-w-3xl animate-fade-in-up">
-            {ppdb && (
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur rounded-full px-4 py-2 text-sm mb-6 border border-white/20">
-                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                PPDB {ppdb.tahun_ajaran} Sedang Dibuka
+        <div className="container mx-auto px-4 py-16 sm:py-24 relative">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="animate-fade-in-up">
+              {ppdb && (
+                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur rounded-full px-4 py-2 text-sm mb-6 border border-white/20">
+                  <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                  PPDB {ppdb.tahun_ajaran} Sedang Dibuka
+                </div>
+              )}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-6">
+                Selamat Datang di<br />
+                <span className="text-yellow-400">Haya Bina</span><br />
+                Insani
+              </h1>
+              <p className="text-lg sm:text-xl text-blue-100 mb-8 max-w-xl leading-relaxed">
+                Sekolah unggulan berakreditasi A yang berkomitmen mencetak generasi beriman, berprestasi, dan berdaya saing global.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button asChild size="lg" className="bg-yellow-400 text-blue-900 hover:bg-yellow-300 font-bold shadow-lg shadow-yellow-400/30 hover:shadow-yellow-400/50 transition-all hover:-translate-y-0.5">
+                  <Link href="/ppdb/daftar">
+                    Daftar PPDB Sekarang <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="border-white/40 text-white hover:bg-white/10 backdrop-blur">
+                  <Link href="/tentang">Pelajari Lebih Lanjut</Link>
+                </Button>
               </div>
-            )}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-6">
-              Selamat Datang di<br />
-              <span className="text-yellow-400">SMA Negeri 1</span><br />
-              Contoh
-            </h1>
-            <p className="text-lg sm:text-xl text-blue-100 mb-8 max-w-2xl leading-relaxed">
-              Sekolah unggulan berakreditasi A yang berkomitmen mencetak generasi berkarakter, berprestasi, dan berdaya saing global.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button asChild size="lg" className="bg-yellow-400 text-blue-900 hover:bg-yellow-300 font-bold shadow-lg shadow-yellow-400/30 hover:shadow-yellow-400/50 transition-all hover:-translate-y-0.5">
-                <Link href="/ppdb/daftar">
-                  Daftar PPDB Sekarang <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-white/40 text-white hover:bg-white/10 backdrop-blur">
-                <Link href="/tentang">Pelajari Lebih Lanjut</Link>
-              </Button>
+            </div>
+            {/* Hero image */}
+            <div className="hidden lg:block relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-blue-950/50 border border-white/10">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=700&q=80"
+                  alt="Suasana sekolah Haya Bina Insani"
+                  className="w-full h-80 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent" />
+              </div>
+              {/* Floating badge */}
+              <div className="absolute -bottom-4 -left-4 bg-yellow-400 text-blue-900 rounded-2xl px-5 py-3 shadow-xl">
+                <p className="text-xs font-semibold">Akreditasi</p>
+                <p className="text-2xl font-black leading-tight">A</p>
+                <p className="text-xs font-semibold">Unggul</p>
+              </div>
             </div>
           </div>
         </div>
@@ -244,8 +264,13 @@ export default async function HomePage() {
             <div className="grid md:grid-cols-3 gap-6">
               {beritaList.map((berita) => (
                 <Card key={berita.id} className="hover:shadow-md transition-shadow overflow-hidden">
-                  <div className="h-40 bg-gradient-to-br from-blue-100 to-blue-200   flex items-center justify-center">
-                    <BookOpen className="h-12 w-12 text-blue-400" />
+                  <div className="h-40 overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={berita.gambar_url || `https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=80`}
+                      alt={berita.judul}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
                   <CardHeader className="pb-2">
                     <Badge variant={badgeVariantMap[berita.kategori] || 'info'} className="w-fit mb-2 capitalize">

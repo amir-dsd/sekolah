@@ -3,9 +3,10 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import { Menu, X, GraduationCap, LogOut, UserCircle } from 'lucide-react'
+import { Menu, X, LogOut, UserCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { createClient } from '@/lib/supabase/client'
+import { LogoHBI } from '@/components/logo'
 import type { User } from '@supabase/supabase-js'
 
 const navItems = [
@@ -48,11 +49,11 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 font-bold text-blue-700 hover:opacity-90 transition-opacity">
-            <div className="w-8 h-8 bg-blue-700 rounded-lg flex items-center justify-center shadow-sm">
-              <GraduationCap className="h-5 w-5 text-white" />
+            <LogoHBI size={36} />
+            <div className="leading-tight">
+              <span className="hidden sm:block text-sm font-extrabold tracking-tight text-blue-800">Haya Bina Insani</span>
+              <span className="block sm:hidden text-sm font-extrabold text-blue-800">HBI</span>
             </div>
-            <span className="hidden sm:block text-base font-extrabold tracking-tight">SMA Negeri 1 Contoh</span>
-            <span className="block sm:hidden text-base font-extrabold">SMAN 1</span>
           </Link>
 
           {/* Desktop nav */}

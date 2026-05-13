@@ -8,7 +8,7 @@ import { formatDate } from '@/lib/utils'
 
 export const metadata: Metadata = {
   title: 'Formulir Pendaftaran PPDB',
-  description: 'Formulir pendaftaran siswa baru SMA Negeri 1 Contoh',
+  description: 'Formulir pendaftaran siswa baru Haya Bina Insani',
 }
 
 async function getPPDB() {

@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export const metadata: Metadata = {
   title: 'Kontak',
-  description: 'Hubungi SMA Negeri 1 Contoh',
+  description: 'Hubungi Haya Bina Insani',
 }
 
 export default function KontakPage() {
@@ -51,8 +51,8 @@ export default function KontakPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 ">Email</h3>
-                    <p className="text-gray-600  text-sm mt-1">info@sman1contoh.sch.id</p>
-                    <p className="text-gray-600  text-sm">ppdb@sman1contoh.sch.id (khusus PPDB)</p>
+                    <p className="text-gray-600  text-sm mt-1">info@hayabinainsani.sch.id</p>
+                    <p className="text-gray-600  text-sm">ppdb@hayabinainsani.sch.id (khusus PPDB)</p>
                   </div>
                 </div>
 
@@ -73,9 +73,9 @@ export default function KontakPage() {
                 <h3 className="font-semibold text-gray-900  mb-3">Media Sosial</h3>
                 <div className="flex gap-3">
                   {[
-                    { label: 'Facebook', handle: '@sman1contoh' },
-                    { label: 'Instagram', handle: '@sman1contoh' },
-                    { label: 'YouTube', handle: 'SMA Negeri 1 Contoh' },
+                    { label: 'Facebook', handle: '@hayabinainsani' },
+                    { label: 'Instagram', handle: '@hayabinainsani' },
+                    { label: 'YouTube', handle: 'Haya Bina Insani' },
                   ].map(({ label, handle }) => (
                     <div key={label} className="flex flex-col items-center bg-gray-100  rounded-lg px-3 py-2">
                       <span className="text-xs font-semibold text-blue-700 ">{label}</span>

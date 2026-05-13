@@ -41,7 +41,7 @@ const statusConfig: Record<StatusPendaftaran, {
     variant: 'success',
     warna: 'text-green-600',
     bg: 'bg-green-50 border-green-200',
-    deskripsi: 'Selamat! Anda diterima di SMA Negeri 1 Contoh. Segera lakukan daftar ulang sesuai jadwal.',
+    deskripsi: 'Selamat! Anda diterima di Haya Bina Insani. Segera lakukan daftar ulang sesuai jadwal.',
   },
   ditolak: {
     label: 'Tidak Diterima',
@@ -186,7 +186,7 @@ export function CekStatusForm({
       <Card className="bg-blue-50 border-blue-100">
         <CardContent className="pt-5 pb-4">
           <p className="text-sm text-blue-700">
-            <strong>Butuh bantuan?</strong> Hubungi panitia PPDB di nomor <strong>(021) 1234-5678</strong> atau email <strong>ppdb@sman1contoh.sch.id</strong>
+            <strong>Butuh bantuan?</strong> Hubungi panitia PPDB di nomor <strong>(021) 1234-5678</strong> atau email <strong>ppdb@hayabinainsani.sch.id</strong>
           </p>
         </CardContent>
       </Card>

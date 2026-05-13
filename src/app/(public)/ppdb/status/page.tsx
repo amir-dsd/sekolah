@@ -4,7 +4,7 @@ import { CekStatusForm } from './cek-status-form'
 
 export const metadata: Metadata = {
   title: 'Cek Status Pendaftaran PPDB',
-  description: 'Cek status pendaftaran siswa baru SMA Negeri 1 Contoh',
+  description: 'Cek status pendaftaran siswa baru Haya Bina Insani',
 }
 
 export default async function StatusPage() {

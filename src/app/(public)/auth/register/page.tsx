@@ -3,7 +3,7 @@ import { RegisterForm } from './register-form'
 
 export const metadata: Metadata = {
   title: 'Daftar Akun Siswa',
-  description: 'Buat akun untuk mendaftar PPDB SMA Negeri 1 Contoh',
+  description: 'Buat akun untuk mendaftar PPDB Haya Bina Insani',
 }
 
 export default function RegisterPage() {

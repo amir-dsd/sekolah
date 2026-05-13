@@ -4,7 +4,7 @@ import { LoginForm } from './login-form'
 
 export const metadata: Metadata = {
   title: 'Login Siswa',
-  description: 'Masuk ke akun siswa PPDB SMA Negeri 1 Contoh',
+  description: 'Masuk ke akun siswa PPDB Haya Bina Insani',
 }
 
 export default function LoginPage() {

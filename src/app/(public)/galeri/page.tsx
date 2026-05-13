@@ -5,7 +5,7 @@ import { Images } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Galeri',
-  description: 'Galeri kegiatan, fasilitas, dan ruang kelas SMA Negeri 1 Contoh',
+  description: 'Galeri kegiatan, fasilitas, dan ruang kelas Haya Bina Insani',
 }
 
 export const dynamic = 'force-dynamic'
@@ -56,7 +56,7 @@ export default async function GaleriPage({
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-3">Galeri Sekolah</h1>
           <p className="text-blue-100 text-lg max-w-xl mx-auto">
-            Dokumentasi kegiatan, fasilitas, dan suasana belajar di SMA Negeri 1 Contoh
+            Dokumentasi kegiatan, fasilitas, dan suasana belajar di Haya Bina Insani
           </p>
         </div>
       </section>

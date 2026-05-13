@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { cookies } from 'next/headers'
-import { Users, BookOpen, CheckCircle, Clock, XCircle, FileCheck, ArrowRight, GraduationCap, ShieldCheck, Images } from 'lucide-react'
+import { Users, BookOpen, CheckCircle, Clock, XCircle, FileCheck, ArrowRight, ShieldCheck, Images } from 'lucide-react'
+import { LogoHBI } from '@/components/logo'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { formatDate } from '@/lib/utils'
 import { LogoutButton } from './logout-button'
@@ -62,12 +63,10 @@ export default async function AdminPage() {
       <div className="bg-white/80 backdrop-blur border-b sticky top-0 z-20 shadow-sm">
         <div className="px-4 sm:px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-blue-700 rounded-xl flex items-center justify-center shadow-sm">
-              <GraduationCap className="h-5 w-5 text-white" />
-            </div>
+            <LogoHBI size={36} />
             <div>
               <p className="font-bold text-gray-900 text-sm leading-tight">Admin Dashboard</p>
-              <p className="text-xs text-gray-400">SMA Negeri 1 Contoh</p>
+              <p className="text-xs text-gray-400">Haya Bina Insani</p>
             </div>
           </div>
           <div className="flex items-center gap-2">

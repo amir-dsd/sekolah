@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { GraduationCap, MapPin, Phone, Mail } from 'lucide-react'
+import { MapPin, Phone, Mail } from 'lucide-react'
+import { LogoHBI } from '@/components/logo'
 
 export function Footer() {
   return (
@@ -8,10 +9,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center gap-2 font-bold text-lg">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <GraduationCap className="h-5 w-5 text-white" />
-              </div>
-              <span>SMA Negeri 1 Contoh</span>
+              <LogoHBI size={38} />
+              <span>Haya Bina Insani</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">
               Sekolah unggulan yang menghasilkan lulusan berkarakter, berprestasi, dan siap menghadapi tantangan global.
@@ -74,14 +73,14 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2 text-sm text-slate-400">
                 <Mail className="h-4 w-4 shrink-0 text-blue-500" />
-                <span>info@sman1contoh.sch.id</span>
+                <span>info@hayabinainsani.sch.id</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-slate-800 mt-10 pt-6 text-center text-sm text-slate-500">
-          <p>&copy; {new Date().getFullYear()} SMA Negeri 1 Contoh. Hak cipta dilindungi.</p>
+          <p>&copy; {new Date().getFullYear()} Haya Bina Insani. Hak cipta dilindungi.</p>
         </div>
       </div>
     </footer>

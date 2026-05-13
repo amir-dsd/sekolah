@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge'
 
 export const metadata: Metadata = {
   title: 'Program Studi',
-  description: 'Program jurusan dan kegiatan ekstrakurikuler di SMA Negeri 1 Contoh',
+  description: 'Program jurusan dan kegiatan ekstrakurikuler di Haya Bina Insani',
 }
 
 const programs = [

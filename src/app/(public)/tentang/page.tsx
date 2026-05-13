@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export const metadata: Metadata = {
   title: 'Tentang Sekolah',
-  description: 'Profil dan sejarah SMA Negeri 1 Contoh',
+  description: 'Profil dan sejarah Haya Bina Insani',
 }
 
 const nilaiSekolah = [
@@ -40,7 +40,7 @@ export default function TentangPage() {
             <h1 className="text-3xl md:text-4xl font-bold">Tentang Sekolah</h1>
           </div>
           <p className="text-blue-100 text-lg max-w-2xl">
-            Mengenal lebih dalam SMA Negeri 1 Contoh — sejarah, visi, dan komitmen kami untuk pendidikan berkualitas.
+            Mengenal lebih dalam Haya Bina Insani — sejarah, visi, dan komitmen kami untuk pendidikan berkualitas.
           </p>
         </div>
       </section>
@@ -50,7 +50,7 @@ export default function TentangPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-3">Visi &amp; Misi</h2>
-            <p className="text-gray-500 max-w-xl mx-auto">Landasan dan arah pengembangan SMA Negeri 1 Contoh dalam mewujudkan pendidikan berkualitas</p>
+            <p className="text-gray-500 max-w-xl mx-auto">Landasan dan arah pengembangan Haya Bina Insani dalam mewujudkan pendidikan berkualitas</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Visi */}
@@ -99,7 +99,7 @@ export default function TentangPage() {
             <div>
               <h2 className="text-2xl font-bold text-gray-900  mb-4">Profil Sekolah</h2>
               <p className="text-gray-600  leading-relaxed mb-4">
-                SMA Negeri 1 Contoh berdiri sejak tahun <strong>1975</strong> dan telah menjadi salah satu sekolah menengah atas terbaik di kota ini. Selama lebih dari 45 tahun, kami telah melahirkan ribuan alumni yang sukses di berbagai bidang.
+                Haya Bina Insani berdiri sejak tahun <strong>1975</strong> dan telah menjadi salah satu sekolah menengah atas terbaik di kota ini. Selama lebih dari 45 tahun, kami telah melahirkan ribuan alumni yang sukses di berbagai bidang.
               </p>
               <p className="text-gray-600  leading-relaxed mb-6">
                 Dengan fasilitas modern, tenaga pengajar berpengalaman, dan lingkungan belajar yang kondusif, kami berkomitmen untuk memberikan pendidikan terbaik bagi setiap siswa.
@@ -118,8 +118,13 @@ export default function TentangPage() {
                 ))}
               </div>
             </div>
-            <div className="bg-gradient-to-br from-blue-100 to-blue-200   rounded-2xl h-80 flex items-center justify-center">
-              <GraduationCap className="h-32 w-32 text-blue-400 " />
+            <div className="rounded-2xl overflow-hidden shadow-lg h-80">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=700&q=80"
+                alt="Gedung Haya Bina Insani"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -130,7 +135,7 @@ export default function TentangPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-gray-900  mb-3">Nilai-Nilai Kami</h2>
-            <p className="text-gray-600 ">Prinsip yang menjadi fondasi pendidikan di SMA Negeri 1 Contoh</p>
+            <p className="text-gray-600 ">Prinsip yang menjadi fondasi pendidikan di Haya Bina Insani</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {nilaiSekolah.map(({ icon: Icon, label, deskripsi }) => (
@@ -153,7 +158,7 @@ export default function TentangPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-gray-900  mb-3">Struktur Organisasi</h2>
-            <p className="text-gray-600 ">Tim kepemimpinan SMA Negeri 1 Contoh periode 2024/2025</p>
+            <p className="text-gray-600 ">Tim kepemimpinan Haya Bina Insani periode 2024/2025</p>
           </div>
           <div className="max-w-3xl mx-auto">
             <div className="grid gap-3">

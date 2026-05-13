@@ -86,7 +86,7 @@ export function RegisterForm() {
           <GraduationCap className="h-8 w-8 text-white" />
         </div>
         <CardTitle className="text-2xl font-bold">Buat Akun Siswa</CardTitle>
-        <CardDescription>Daftar untuk mengikuti PPDB SMA Negeri 1 Contoh</CardDescription>
+        <CardDescription>Daftar untuk mengikuti PPDB Haya Bina Insani</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
