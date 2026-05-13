@@ -45,13 +45,12 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>
 
-type DokumenKey = 'foto' | 'ijazah' | 'kartu_keluarga' | 'akta_lahir'
+type DokumenKey = 'kartu_keluarga' | 'akta_lahir' | 'ijazah'
 
-const dokumenList: { key: DokumenKey; label: string; wajib: boolean; hint: string }[] = [
-  { key: 'foto', label: 'Pas Foto Terbaru', wajib: true, hint: 'Format JPG/PNG, latar biru/merah, maks 2MB' },
-  { key: 'ijazah', label: 'Ijazah / SKHUN SMP', wajib: true, hint: 'Scan atau foto yang jelas, maks 5MB' },
-  { key: 'kartu_keluarga', label: 'Kartu Keluarga', wajib: true, hint: 'Scan atau foto yang jelas, maks 5MB' },
-  { key: 'akta_lahir', label: 'Akta Kelahiran', wajib: true, hint: 'Scan atau foto yang jelas, maks 5MB' },
+const dokumenList: { key: DokumenKey; label: string; hint: string }[] = [
+  { key: 'kartu_keluarga', label: 'Kartu Keluarga', hint: 'Scan atau foto yang jelas, format JPG/PNG/PDF, maks 5MB' },
+  { key: 'akta_lahir', label: 'Akta Kelahiran', hint: 'Scan atau foto yang jelas, format JPG/PNG/PDF, maks 5MB' },
+  { key: 'ijazah', label: 'Ijazah Sekolah Terakhir (SMP)', hint: 'Scan atau foto yang jelas, format JPG/PNG/PDF, maks 5MB' },
 ]
 
 const steps = [
@@ -79,6 +78,7 @@ export function FormPendaftaran({
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitResult, setSubmitResult] = useState<{ success: boolean; nomor?: string; error?: string } | null>(null)
   const [dokumen, setDokumen] = useState<Partial<Record<DokumenKey, File>>>({})
+  const [dokumenError, setDokumenError] = useState('')
   const fileRefs = useRef<Partial<Record<DokumenKey, HTMLInputElement>>>({})
 
   const form = useForm<FormData>({
@@ -120,9 +120,17 @@ export function FormPendaftaran({
       else delete next[key]
       return next
     })
+    if (file) setDokumenError('')
   }
 
   const onSubmit = async (data: FormData) => {
+    // Validate all documents are uploaded
+    const missing = dokumenList.filter(d => !dokumen[d.key]).map(d => d.label)
+    if (missing.length > 0) {
+      setDokumenError(`Dokumen berikut wajib diupload: ${missing.join(', ')}`)
+      return
+    }
+    setDokumenError('')
     setIsSubmitting(true)
     try {
       const supabase = createClient()
@@ -460,25 +468,25 @@ export function FormPendaftaran({
           {/* Step 6: Upload Dokumen */}
           {step === 6 && (
             <div className="space-y-5">
-              <div className="bg-amber-50 border border-amber-100 rounded-lg p-4 text-sm text-amber-800">
-                Upload dokumen pendukung pendaftaran. Dokumen yang belum diunggah dapat dilengkapi nanti dengan menghubungi panitia PPDB.
+              <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 text-sm text-blue-800">
+                Semua dokumen di bawah <strong>wajib diupload</strong> sebelum pendaftaran dapat dikirim.
               </div>
 
               <div className="space-y-4">
-                {dokumenList.map(({ key, label, wajib, hint }) => {
+                {dokumenList.map(({ key, label, hint }) => {
                   const file = dokumen[key]
                   return (
-                    <div key={key} className="border rounded-xl p-4">
-                      <div className="flex items-center justify-between mb-2">
+                    <div key={key} className={`border rounded-xl p-4 transition-colors ${file ? 'border-green-200 bg-green-50/30' : 'border-gray-200'}`}>
+                      <div className="flex items-center justify-between mb-1">
                         <Label className="text-sm font-semibold">
-                          {label} {wajib && <span className="text-red-500">*</span>}
+                          {label} <span className="text-red-500">*</span>
                         </Label>
                         {file && (
                           <button type="button" onClick={() => {
                             handleFileChange(key, null)
                             if (fileRefs.current[key]) fileRefs.current[key]!.value = ''
-                          }} className="text-red-500 hover:text-red-700">
-                            <X className="h-4 w-4" />
+                          }} className="text-red-400 hover:text-red-600 text-xs flex items-center gap-1">
+                            <X className="h-3 w-3" /> Hapus
                           </button>
                         )}
                       </div>
@@ -507,6 +515,12 @@ export function FormPendaftaran({
                   )
                 })}
               </div>
+
+              {dokumenError && (
+                <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                  {dokumenError}
+                </div>
+              )}
 
               {submitResult?.error && (
                 <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
