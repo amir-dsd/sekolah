@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { GraduationCap, Target, Heart, Lightbulb, Award } from 'lucide-react'
+import { GraduationCap, Target, Heart, Lightbulb, Award, Eye, Flag } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export const metadata: Metadata = {
@@ -42,6 +42,53 @@ export default function TentangPage() {
           <p className="text-blue-100 text-lg max-w-2xl">
             Mengenal lebih dalam SMA Negeri 1 Contoh — sejarah, visi, dan komitmen kami untuk pendidikan berkualitas.
           </p>
+        </div>
+      </section>
+
+      {/* Visi & Misi */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-3">Visi &amp; Misi</h2>
+            <p className="text-gray-500 max-w-xl mx-auto">Landasan dan arah pengembangan SMA Negeri 1 Contoh dalam mewujudkan pendidikan berkualitas</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Visi */}
+            <div className="bg-blue-50 border border-blue-100 rounded-2xl p-8">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-11 h-11 bg-blue-700 rounded-xl flex items-center justify-center">
+                  <Eye className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-blue-800">Visi</h3>
+              </div>
+              <p className="text-gray-700 leading-relaxed text-base font-medium italic">
+                "Mewujudkan lulusan yang beriman, berakhlak mulia, berprestasi, berbudaya, dan berwawasan global."
+              </p>
+            </div>
+            {/* Misi */}
+            <div className="bg-green-50 border border-green-100 rounded-2xl p-8">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-11 h-11 bg-green-700 rounded-xl flex items-center justify-center">
+                  <Flag className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-green-800">Misi</h3>
+              </div>
+              <ol className="space-y-3">
+                {[
+                  'Menumbuhkan penghayatan terhadap ajaran agama dan budaya bangsa sebagai sumber kearifan dalam bertindak.',
+                  'Melaksanakan pembelajaran dan bimbingan secara efektif untuk mengoptimalkan potensi setiap siswa.',
+                  'Mendorong dan membantu siswa mengenali potensi diri sehingga dapat berkembang secara optimal.',
+                  'Menerapkan manajemen partisipatif yang melibatkan seluruh warga sekolah dan pemangku kepentingan.',
+                  'Membangun budaya berprestasi dan semangat kompetitif yang sehat di seluruh warga sekolah.',
+                ].map((m, i) => (
+                  <li key={i} className="flex gap-3 text-sm text-gray-700 leading-relaxed">
+                    <span className="w-6 h-6 bg-green-700 text-white rounded-full flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">{i + 1}</span>
+                    {m}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
         </div>
       </section>
 

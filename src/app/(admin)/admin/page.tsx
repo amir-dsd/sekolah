@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { cookies } from 'next/headers'
-import { Users, BookOpen, CheckCircle, Clock, XCircle, FileCheck, ArrowRight, GraduationCap, ShieldCheck } from 'lucide-react'
+import { Users, BookOpen, CheckCircle, Clock, XCircle, FileCheck, ArrowRight, GraduationCap, ShieldCheck, Images } from 'lucide-react'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { formatDate } from '@/lib/utils'
 import { LogoutButton } from './logout-button'
@@ -127,6 +127,16 @@ export default async function AdminPage() {
               <p className="text-sm text-gray-500">Tambah dan edit artikel sekolah</p>
             </div>
             <ArrowRight className="h-5 w-5 text-gray-300 group-hover:text-purple-600 group-hover:translate-x-1 transition-all" />
+          </Link>
+          <Link href="/admin/galeri" className="group bg-white rounded-2xl border border-gray-100 p-5 flex items-center gap-4 hover:shadow-md hover:border-orange-200 transition-all">
+            <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center group-hover:bg-orange-600 transition-colors">
+              <Images className="h-6 w-6 text-orange-600 group-hover:text-white transition-colors" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="font-bold text-gray-900">Kelola Galeri</p>
+              <p className="text-sm text-gray-500">Tambah dan hapus foto galeri sekolah</p>
+            </div>
+            <ArrowRight className="h-5 w-5 text-gray-300 group-hover:text-orange-500 group-hover:translate-x-1 transition-all" />
           </Link>
           {isSuperAdmin && (
             <Link href="/admin/kelola-admin" className="group bg-white rounded-2xl border border-gray-100 p-5 flex items-center gap-4 hover:shadow-md hover:border-emerald-200 transition-all">

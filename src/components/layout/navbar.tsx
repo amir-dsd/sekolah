@@ -12,6 +12,7 @@ const navItems = [
   { href: '/', label: 'Beranda' },
   { href: '/tentang', label: 'Tentang' },
   { href: '/program', label: 'Program' },
+  { href: '/galeri', label: 'Galeri' },
   { href: '/berita', label: 'Berita' },
   { href: '/ppdb', label: 'PPDB' },
   { href: '/kontak', label: 'Kontak' },

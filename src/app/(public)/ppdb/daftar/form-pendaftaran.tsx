@@ -1,11 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { CheckCircle, Loader2, ChevronRight, ChevronLeft } from 'lucide-react'
+import { CheckCircle, Loader2, ChevronRight, ChevronLeft, Upload, FileText, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -45,12 +45,22 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>
 
+type DokumenKey = 'foto' | 'ijazah' | 'kartu_keluarga' | 'akta_lahir'
+
+const dokumenList: { key: DokumenKey; label: string; wajib: boolean; hint: string }[] = [
+  { key: 'foto', label: 'Pas Foto Terbaru', wajib: true, hint: 'Format JPG/PNG, latar biru/merah, maks 2MB' },
+  { key: 'ijazah', label: 'Ijazah / SKHUN SMP', wajib: true, hint: 'Scan atau foto yang jelas, maks 5MB' },
+  { key: 'kartu_keluarga', label: 'Kartu Keluarga', wajib: true, hint: 'Scan atau foto yang jelas, maks 5MB' },
+  { key: 'akta_lahir', label: 'Akta Kelahiran', wajib: true, hint: 'Scan atau foto yang jelas, maks 5MB' },
+]
+
 const steps = [
   { id: 1, label: 'Data Diri' },
   { id: 2, label: 'Alamat' },
   { id: 3, label: 'Asal Sekolah' },
   { id: 4, label: 'Data Orang Tua' },
   { id: 5, label: 'Jurusan' },
+  { id: 6, label: 'Dokumen' },
 ]
 
 export function FormPendaftaran({
@@ -68,6 +78,8 @@ export function FormPendaftaran({
   const [step, setStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitResult, setSubmitResult] = useState<{ success: boolean; nomor?: string; error?: string } | null>(null)
+  const [dokumen, setDokumen] = useState<Partial<Record<DokumenKey, File>>>({})
+  const fileRefs = useRef<Partial<Record<DokumenKey, HTMLInputElement>>>({})
 
   const form = useForm<FormData>({
     resolver: zodResolver(schema),
@@ -89,16 +101,26 @@ export function FormPendaftaran({
       3: ['asal_sekolah', 'tahun_lulus'],
       4: ['nama_ayah', 'nama_ibu', 'no_telepon_ortu'],
       5: ['pilihan_jurusan_1'],
+      6: [],
     }
     return trigger(fieldsByStep[step])
   }
 
   const nextStep = async () => {
     const valid = await validateStep()
-    if (valid) setStep((s) => Math.min(s + 1, 5))
+    if (valid) setStep((s) => Math.min(s + 1, 6))
   }
 
   const prevStep = () => setStep((s) => Math.max(s - 1, 1))
+
+  const handleFileChange = (key: DokumenKey, file: File | null) => {
+    setDokumen(prev => {
+      const next = { ...prev }
+      if (file) next[key] = file
+      else delete next[key]
+      return next
+    })
+  }
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true)
@@ -113,19 +135,46 @@ export function FormPendaftaran({
       const urutan = ((jumlahQuery.count || 0) + 1).toString().padStart(4, '0')
       const nomorPendaftaran = `PPDB-${tahunAjaran.replace('/', '')}-${urutan}`
 
-      const { error } = await supabase.from('pendaftaran').insert({
-        ...data,
-        tahun_lulus: parseInt(data.tahun_lulus),
-        nomor_pendaftaran: nomorPendaftaran,
-        tahun_ajaran: tahunAjaran,
-        status: 'menunggu',
-        ...(userId ? { user_id: userId } : {}),
-      })
+      const { data: inserted, error } = await supabase
+        .from('pendaftaran')
+        .insert({
+          ...data,
+          tahun_lulus: parseInt(data.tahun_lulus),
+          nomor_pendaftaran: nomorPendaftaran,
+          tahun_ajaran: tahunAjaran,
+          status: 'menunggu',
+          ...(userId ? { user_id: userId } : {}),
+        })
+        .select('id')
+        .single()
 
       if (error) throw error
 
+      // Upload dokumen ke Supabase Storage
+      const pendaftaranId = inserted.id
+      for (const { key } of dokumenList) {
+        const file = dokumen[key]
+        if (!file) continue
+        const ext = file.name.split('.').pop()
+        const path = `${nomorPendaftaran}/${key}.${ext}`
+
+        const { data: uploaded, error: uploadErr } = await supabase.storage
+          .from('dokumen-ppdb')
+          .upload(path, file, { upsert: true })
+
+        if (!uploadErr && uploaded) {
+          const { data: { publicUrl } } = supabase.storage.from('dokumen-ppdb').getPublicUrl(path)
+          await supabase.from('dokumen_pendaftaran').insert({
+            pendaftaran_id: pendaftaranId,
+            jenis_dokumen: key,
+            url_dokumen: publicUrl,
+            nama_file: file.name,
+          })
+        }
+      }
+
       setSubmitResult({ success: true, nomor: nomorPendaftaran })
-    } catch (err) {
+    } catch {
       setSubmitResult({ success: false, error: 'Terjadi kesalahan. Silakan coba lagi.' })
     } finally {
       setIsSubmitting(false)
@@ -137,12 +186,12 @@ export function FormPendaftaran({
       <Card className="text-center py-12">
         <CardContent>
           <CheckCircle className="h-20 w-20 text-green-500 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-gray-900  mb-2">Pendaftaran Berhasil!</h2>
-          <p className="text-gray-600  mb-4">Nomor pendaftaran Anda adalah:</p>
-          <div className="bg-blue-50  border-2 border-blue-200  rounded-xl px-8 py-4 inline-block mb-6">
-            <span className="text-2xl font-black text-blue-700  tracking-wider">{submitResult.nomor}</span>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Pendaftaran Berhasil!</h2>
+          <p className="text-gray-600 mb-4">Nomor pendaftaran Anda adalah:</p>
+          <div className="bg-blue-50 border-2 border-blue-200 rounded-xl px-8 py-4 inline-block mb-6">
+            <span className="text-2xl font-black text-blue-700 tracking-wider">{submitResult.nomor}</span>
           </div>
-          <p className="text-gray-500  text-sm mb-8 max-w-md mx-auto">
+          <p className="text-gray-500 text-sm mb-8 max-w-md mx-auto">
             Simpan nomor pendaftaran ini. Gunakan nomor tersebut untuk memantau status pendaftaran Anda.
           </p>
           <div className="flex gap-3 justify-center">
@@ -177,7 +226,7 @@ export function FormPendaftaran({
               </span>
             </div>
             {i < steps.length - 1 && (
-              <div className={`h-0.5 w-8 sm:w-12 mx-2 transition-all ${step > s.id ? 'bg-blue-700' : 'bg-gray-200'}`} />
+              <div className={`h-0.5 w-6 sm:w-10 mx-2 transition-all ${step > s.id ? 'bg-blue-700' : 'bg-gray-200'}`} />
             )}
           </div>
         ))}
@@ -185,78 +234,72 @@ export function FormPendaftaran({
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg text-blue-800 ">
+          <CardTitle className="text-lg text-blue-800">
             Langkah {step}: {steps[step - 1].label}
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-5">
           {/* Step 1: Data Diri */}
           {step === 1 && (
-            <>
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="sm:col-span-2">
-                  <Label htmlFor="nama_lengkap">Nama Lengkap <span className="text-red-500">*</span></Label>
-                  <Input id="nama_lengkap" {...register('nama_lengkap')} placeholder="Sesuai akta kelahiran" className="mt-1" />
-                  {errors.nama_lengkap && <p className="text-red-500 text-xs mt-1">{errors.nama_lengkap.message}</p>}
-                </div>
-                <div>
-                  <Label htmlFor="nik">NIK <span className="text-red-500">*</span></Label>
-                  <Input id="nik" {...register('nik')} placeholder="16 digit" maxLength={16} className="mt-1" />
-                  {errors.nik && <p className="text-red-500 text-xs mt-1">{errors.nik.message}</p>}
-                </div>
-                <div>
-                  <Label htmlFor="nisn">NISN</Label>
-                  <Input id="nisn" {...register('nisn')} placeholder="Nomor Induk Siswa Nasional" className="mt-1" />
-                </div>
-                <div>
-                  <Label htmlFor="tempat_lahir">Tempat Lahir <span className="text-red-500">*</span></Label>
-                  <Input id="tempat_lahir" {...register('tempat_lahir')} placeholder="Nama kota" className="mt-1" />
-                  {errors.tempat_lahir && <p className="text-red-500 text-xs mt-1">{errors.tempat_lahir.message}</p>}
-                </div>
-                <div>
-                  <Label htmlFor="tanggal_lahir">Tanggal Lahir <span className="text-red-500">*</span></Label>
-                  <Input id="tanggal_lahir" type="date" {...register('tanggal_lahir')} className="mt-1" />
-                  {errors.tanggal_lahir && <p className="text-red-500 text-xs mt-1">{errors.tanggal_lahir.message}</p>}
-                </div>
-                <div>
-                  <Label>Jenis Kelamin <span className="text-red-500">*</span></Label>
-                  <Select onValueChange={(v) => setValue('jenis_kelamin', v)}>
-                    <SelectTrigger className="mt-1">
-                      <SelectValue placeholder="Pilih jenis kelamin" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Laki-laki">Laki-laki</SelectItem>
-                      <SelectItem value="Perempuan">Perempuan</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {errors.jenis_kelamin && <p className="text-red-500 text-xs mt-1">{errors.jenis_kelamin.message}</p>}
-                </div>
-                <div>
-                  <Label>Agama <span className="text-red-500">*</span></Label>
-                  <Select onValueChange={(v) => setValue('agama', v)}>
-                    <SelectTrigger className="mt-1">
-                      <SelectValue placeholder="Pilih agama" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {['Islam', 'Kristen', 'Katolik', 'Hindu', 'Buddha', 'Konghucu'].map((a) => (
-                        <SelectItem key={a} value={a}>{a}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  {errors.agama && <p className="text-red-500 text-xs mt-1">{errors.agama.message}</p>}
-                </div>
-                <div>
-                  <Label htmlFor="no_telepon">No. Telepon / HP <span className="text-red-500">*</span></Label>
-                  <Input id="no_telepon" {...register('no_telepon')} placeholder="08xx-xxxx-xxxx" className="mt-1" />
-                  {errors.no_telepon && <p className="text-red-500 text-xs mt-1">{errors.no_telepon.message}</p>}
-                </div>
-                <div>
-                  <Label htmlFor="email">Email <span className="text-red-500">*</span></Label>
-                  <Input id="email" type="email" {...register('email')} placeholder="email@contoh.com" className="mt-1" />
-                  {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
-                </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="sm:col-span-2">
+                <Label htmlFor="nama_lengkap">Nama Lengkap <span className="text-red-500">*</span></Label>
+                <Input id="nama_lengkap" {...register('nama_lengkap')} placeholder="Sesuai akta kelahiran" className="mt-1" />
+                {errors.nama_lengkap && <p className="text-red-500 text-xs mt-1">{errors.nama_lengkap.message}</p>}
               </div>
-            </>
+              <div>
+                <Label htmlFor="nik">NIK <span className="text-red-500">*</span></Label>
+                <Input id="nik" {...register('nik')} placeholder="16 digit" maxLength={16} className="mt-1" />
+                {errors.nik && <p className="text-red-500 text-xs mt-1">{errors.nik.message}</p>}
+              </div>
+              <div>
+                <Label htmlFor="nisn">NISN</Label>
+                <Input id="nisn" {...register('nisn')} placeholder="Nomor Induk Siswa Nasional" className="mt-1" />
+              </div>
+              <div>
+                <Label htmlFor="tempat_lahir">Tempat Lahir <span className="text-red-500">*</span></Label>
+                <Input id="tempat_lahir" {...register('tempat_lahir')} placeholder="Nama kota" className="mt-1" />
+                {errors.tempat_lahir && <p className="text-red-500 text-xs mt-1">{errors.tempat_lahir.message}</p>}
+              </div>
+              <div>
+                <Label htmlFor="tanggal_lahir">Tanggal Lahir <span className="text-red-500">*</span></Label>
+                <Input id="tanggal_lahir" type="date" {...register('tanggal_lahir')} className="mt-1" />
+                {errors.tanggal_lahir && <p className="text-red-500 text-xs mt-1">{errors.tanggal_lahir.message}</p>}
+              </div>
+              <div>
+                <Label>Jenis Kelamin <span className="text-red-500">*</span></Label>
+                <Select onValueChange={(v) => setValue('jenis_kelamin', v)}>
+                  <SelectTrigger className="mt-1"><SelectValue placeholder="Pilih jenis kelamin" /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Laki-laki">Laki-laki</SelectItem>
+                    <SelectItem value="Perempuan">Perempuan</SelectItem>
+                  </SelectContent>
+                </Select>
+                {errors.jenis_kelamin && <p className="text-red-500 text-xs mt-1">{errors.jenis_kelamin.message}</p>}
+              </div>
+              <div>
+                <Label>Agama <span className="text-red-500">*</span></Label>
+                <Select onValueChange={(v) => setValue('agama', v)}>
+                  <SelectTrigger className="mt-1"><SelectValue placeholder="Pilih agama" /></SelectTrigger>
+                  <SelectContent>
+                    {['Islam', 'Kristen', 'Katolik', 'Hindu', 'Buddha', 'Konghucu'].map((a) => (
+                      <SelectItem key={a} value={a}>{a}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                {errors.agama && <p className="text-red-500 text-xs mt-1">{errors.agama.message}</p>}
+              </div>
+              <div>
+                <Label htmlFor="no_telepon">No. Telepon / HP <span className="text-red-500">*</span></Label>
+                <Input id="no_telepon" {...register('no_telepon')} placeholder="08xx-xxxx-xxxx" className="mt-1" />
+                {errors.no_telepon && <p className="text-red-500 text-xs mt-1">{errors.no_telepon.message}</p>}
+              </div>
+              <div>
+                <Label htmlFor="email">Email <span className="text-red-500">*</span></Label>
+                <Input id="email" type="email" {...register('email')} placeholder="email@contoh.com" className="mt-1" />
+                {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
+              </div>
+            </div>
           )}
 
           {/* Step 2: Alamat */}
@@ -307,9 +350,7 @@ export function FormPendaftaran({
               <div>
                 <Label htmlFor="tahun_lulus">Tahun Lulus <span className="text-red-500">*</span></Label>
                 <Select onValueChange={(v) => setValue('tahun_lulus', v)}>
-                  <SelectTrigger className="mt-1">
-                    <SelectValue placeholder="Pilih tahun lulus" />
-                  </SelectTrigger>
+                  <SelectTrigger className="mt-1"><SelectValue placeholder="Pilih tahun lulus" /></SelectTrigger>
                   <SelectContent>
                     {[2025, 2024, 2023, 2022].map((y) => (
                       <SelectItem key={y} value={y.toString()}>{y}</SelectItem>
@@ -325,7 +366,7 @@ export function FormPendaftaran({
           {step === 4 && (
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold text-gray-800  mb-3 pb-2 border-b ">Data Ayah</h3>
+                <h3 className="font-semibold text-gray-800 mb-3 pb-2 border-b">Data Ayah</h3>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="nama_ayah">Nama Ayah <span className="text-red-500">*</span></Label>
@@ -339,7 +380,7 @@ export function FormPendaftaran({
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-800  mb-3 pb-2 border-b ">Data Ibu</h3>
+                <h3 className="font-semibold text-gray-800 mb-3 pb-2 border-b">Data Ibu</h3>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="nama_ibu">Nama Ibu <span className="text-red-500">*</span></Label>
@@ -361,9 +402,7 @@ export function FormPendaftaran({
                 <div>
                   <Label>Penghasilan Orang Tua per Bulan</Label>
                   <Select onValueChange={(v) => setValue('penghasilan_ortu', v)}>
-                    <SelectTrigger className="mt-1">
-                      <SelectValue placeholder="Pilih kisaran penghasilan" />
-                    </SelectTrigger>
+                    <SelectTrigger className="mt-1"><SelectValue placeholder="Pilih kisaran penghasilan" /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="< 1 juta">Kurang dari Rp 1.000.000</SelectItem>
                       <SelectItem value="1-3 juta">Rp 1.000.000 - Rp 3.000.000</SelectItem>
@@ -380,15 +419,13 @@ export function FormPendaftaran({
           {/* Step 5: Pilihan Jurusan */}
           {step === 5 && (
             <div className="space-y-5">
-              <div className="bg-blue-50  border border-blue-100  rounded-lg p-4 text-sm text-blue-700 ">
+              <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 text-sm text-blue-700">
                 Pilih jurusan sesuai minat dan kemampuan. Jika pilihan pertama penuh, sistem akan mempertimbangkan pilihan kedua.
               </div>
               <div>
                 <Label>Pilihan Jurusan 1 <span className="text-red-500">*</span></Label>
                 <Select onValueChange={(v) => setValue('pilihan_jurusan_1', v)}>
-                  <SelectTrigger className="mt-1">
-                    <SelectValue placeholder="Pilih jurusan pertama" />
-                  </SelectTrigger>
+                  <SelectTrigger className="mt-1"><SelectValue placeholder="Pilih jurusan pertama" /></SelectTrigger>
                   <SelectContent>
                     <SelectItem value="MIPA">MIPA (Matematika & Ilmu Pengetahuan Alam)</SelectItem>
                     <SelectItem value="IPS">IPS (Ilmu Pengetahuan Sosial)</SelectItem>
@@ -400,9 +437,7 @@ export function FormPendaftaran({
               <div>
                 <Label>Pilihan Jurusan 2 (Opsional)</Label>
                 <Select onValueChange={(v) => setValue('pilihan_jurusan_2', v)}>
-                  <SelectTrigger className="mt-1">
-                    <SelectValue placeholder="Pilih jurusan alternatif" />
-                  </SelectTrigger>
+                  <SelectTrigger className="mt-1"><SelectValue placeholder="Pilih jurusan alternatif" /></SelectTrigger>
                   <SelectContent>
                     <SelectItem value="MIPA">MIPA (Matematika & Ilmu Pengetahuan Alam)</SelectItem>
                     <SelectItem value="IPS">IPS (Ilmu Pengetahuan Sosial)</SelectItem>
@@ -410,20 +445,71 @@ export function FormPendaftaran({
                   </SelectContent>
                 </Select>
               </div>
-
-              {/* Ringkasan */}
-              <div className="mt-6 p-4 bg-gray-50  rounded-lg border ">
-                <h3 className="font-semibold text-gray-800  mb-2">Ringkasan Data</h3>
+              <div className="mt-6 p-4 bg-gray-50 rounded-lg border">
+                <h3 className="font-semibold text-gray-800 mb-2">Ringkasan Data</h3>
                 <div className="grid sm:grid-cols-2 gap-2 text-sm">
-                  <div><span className="text-gray-500 ">Nama:</span> <span className="font-medium ">{watch('nama_lengkap') || '-'}</span></div>
-                  <div><span className="text-gray-500 ">NIK:</span> <span className="font-medium ">{watch('nik') || '-'}</span></div>
-                  <div><span className="text-gray-500 ">Asal Sekolah:</span> <span className="font-medium ">{watch('asal_sekolah') || '-'}</span></div>
-                  <div><span className="text-gray-500 ">Email:</span> <span className="font-medium ">{watch('email') || '-'}</span></div>
+                  <div><span className="text-gray-500">Nama:</span> <span className="font-medium">{watch('nama_lengkap') || '-'}</span></div>
+                  <div><span className="text-gray-500">NIK:</span> <span className="font-medium">{watch('nik') || '-'}</span></div>
+                  <div><span className="text-gray-500">Asal Sekolah:</span> <span className="font-medium">{watch('asal_sekolah') || '-'}</span></div>
+                  <div><span className="text-gray-500">Email:</span> <span className="font-medium">{watch('email') || '-'}</span></div>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* Step 6: Upload Dokumen */}
+          {step === 6 && (
+            <div className="space-y-5">
+              <div className="bg-amber-50 border border-amber-100 rounded-lg p-4 text-sm text-amber-800">
+                Upload dokumen pendukung pendaftaran. Dokumen yang belum diunggah dapat dilengkapi nanti dengan menghubungi panitia PPDB.
+              </div>
+
+              <div className="space-y-4">
+                {dokumenList.map(({ key, label, wajib, hint }) => {
+                  const file = dokumen[key]
+                  return (
+                    <div key={key} className="border rounded-xl p-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <Label className="text-sm font-semibold">
+                          {label} {wajib && <span className="text-red-500">*</span>}
+                        </Label>
+                        {file && (
+                          <button type="button" onClick={() => {
+                            handleFileChange(key, null)
+                            if (fileRefs.current[key]) fileRefs.current[key]!.value = ''
+                          }} className="text-red-500 hover:text-red-700">
+                            <X className="h-4 w-4" />
+                          </button>
+                        )}
+                      </div>
+                      <p className="text-xs text-gray-400 mb-3">{hint}</p>
+
+                      {file ? (
+                        <div className="flex items-center gap-3 bg-green-50 border border-green-200 rounded-lg px-3 py-2">
+                          <FileText className="h-4 w-4 text-green-600 shrink-0" />
+                          <span className="text-sm text-green-700 truncate font-medium">{file.name}</span>
+                          <span className="text-xs text-green-500 shrink-0">({(file.size / 1024).toFixed(0)} KB)</span>
+                        </div>
+                      ) : (
+                        <label className="flex items-center gap-3 border-2 border-dashed border-gray-200 rounded-lg px-4 py-3 cursor-pointer hover:border-blue-300 hover:bg-blue-50 transition-colors">
+                          <Upload className="h-4 w-4 text-gray-400" />
+                          <span className="text-sm text-gray-500">Klik untuk pilih file</span>
+                          <input
+                            type="file"
+                            accept="image/*,.pdf"
+                            className="hidden"
+                            ref={el => { if (el) fileRefs.current[key] = el }}
+                            onChange={e => handleFileChange(key, e.target.files?.[0] ?? null)}
+                          />
+                        </label>
+                      )}
+                    </div>
+                  )
+                })}
               </div>
 
               {submitResult?.error && (
-                <div className="p-3 bg-red-50  border border-red-200  rounded-lg text-red-700  text-sm">
+                <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
                   {submitResult.error}
                 </div>
               )}
@@ -437,7 +523,7 @@ export function FormPendaftaran({
         <Button type="button" variant="outline" onClick={prevStep} disabled={step === 1}>
           <ChevronLeft className="h-4 w-4 mr-1" /> Sebelumnya
         </Button>
-        {step < 5 ? (
+        {step < 6 ? (
           <Button type="button" onClick={nextStep} className="bg-blue-700 hover:bg-blue-800">
             Selanjutnya <ChevronRight className="h-4 w-4 ml-1" />
           </Button>
