@@ -130,7 +130,7 @@ export default async function HomePage() {
 
       {/* Stats */}
       <section className="bg-white  border-b ">
-        <div className="container mx-auto px-4 py-10">
+        <div className="container mx-auto px-8 py-10">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map(({ icon: Icon, label, value }) => (
               <div key={label} className="flex flex-col items-center text-center p-4">
@@ -148,7 +148,7 @@ export default async function HomePage() {
       {/* PPDB Banner */}
       {ppdb && (
         <section className="bg-yellow-50  border-y border-yellow-200 ">
-          <div className="container mx-auto px-4 py-8">
+          <div className="container mx-auto px-8 py-8">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center shrink-0">
@@ -178,7 +178,7 @@ export default async function HomePage() {
 
       {/* Visi Misi */}
       <section className="bg-gray-50  py-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900  mb-3">Visi & Misi</h2>
             <p className="text-gray-600 ">Landasan kami dalam mendidik generasi penerus bangsa</p>
@@ -220,7 +220,7 @@ export default async function HomePage() {
 
       {/* Program Studi */}
       <section className="py-16 bg-white ">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <div className="flex items-center justify-between mb-10">
             <div>
               <h2 className="text-3xl font-bold text-gray-900  mb-2">Program Studi</h2>
@@ -250,7 +250,7 @@ export default async function HomePage() {
 
       {/* Berita Terbaru */}
       <section className="bg-gray-50  py-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <div className="flex items-center justify-between mb-10">
             <div>
               <h2 className="text-3xl font-bold text-gray-900  mb-2">Berita & Pengumuman</h2>

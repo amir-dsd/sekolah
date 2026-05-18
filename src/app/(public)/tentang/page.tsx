@@ -34,7 +34,7 @@ export default function TentangPage() {
     <div className="flex flex-col">
       {/* Header */}
       <section className="bg-gradient-to-r from-green-800 to-green-600 text-white py-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <div className="flex items-center gap-3 mb-4">
             <GraduationCap className="h-8 w-8" />
             <h1 className="text-3xl md:text-4xl font-bold">Tentang Sekolah</h1>
@@ -47,7 +47,7 @@ export default function TentangPage() {
 
       {/* Visi & Misi */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-3">Visi &amp; Misi</h2>
             <p className="text-gray-500 max-w-xl mx-auto">Landasan dan arah pengembangan Haya Bina Insani dalam mewujudkan pendidikan berkualitas</p>
@@ -94,7 +94,7 @@ export default function TentangPage() {
 
       {/* Profil Sekolah */}
       <section className="py-16 bg-white ">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-2xl font-bold text-gray-900  mb-4">Profil Sekolah</h2>
@@ -132,7 +132,7 @@ export default function TentangPage() {
 
       {/* Nilai Sekolah */}
       <section className="bg-gray-50  py-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-gray-900  mb-3">Nilai-Nilai Kami</h2>
             <p className="text-gray-600 ">Prinsip yang menjadi fondasi pendidikan di Haya Bina Insani</p>
@@ -155,7 +155,7 @@ export default function TentangPage() {
 
       {/* Struktur Organisasi */}
       <section className="py-16 bg-white ">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-gray-900  mb-3">Struktur Organisasi</h2>
             <p className="text-gray-600 ">Tim kepemimpinan Haya Bina Insani periode 2024/2025</p>
@@ -185,7 +185,7 @@ export default function TentangPage() {
 
       {/* Akreditasi */}
       <section className="bg-green-900 text-white py-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold mb-3">Riwayat Akreditasi</h2>
             <p className="text-green-200">Pengakuan kualitas pendidikan kami dari lembaga nasional</p>

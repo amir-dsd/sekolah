@@ -78,7 +78,7 @@ export default function ProgramPage() {
   return (
     <div className="flex flex-col">
       <section className="bg-gradient-to-r from-green-800 to-green-600 text-white py-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <div className="flex items-center gap-3 mb-4">
             <BookOpen className="h-8 w-8" />
             <h1 className="text-3xl md:text-4xl font-bold">Program Studi</h1>
@@ -90,7 +90,7 @@ export default function ProgramPage() {
       </section>
 
       <section className="py-16 bg-white ">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <div className="space-y-8">
             {programs.map(({ icon: Icon, ...program }) => (
               <Card key={program.kode} className={`border-2 ${warnaBg[program.warna]} overflow-hidden`}>
@@ -146,7 +146,7 @@ export default function ProgramPage() {
 
       {/* Ekstrakurikuler */}
       <section className="bg-gray-50  py-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold text-gray-900 mb-3">Ekstrakurikuler</h2>
             <p className="text-gray-600 ">Beragam kegiatan untuk mengembangkan bakat dan minat siswa</p>
@@ -164,7 +164,7 @@ export default function ProgramPage() {
 
       {/* Jadwal */}
       <section className="py-16 bg-white ">
-        <div className="container mx-auto px-4 max-w-2xl">
+        <div className="container mx-auto px-8 max-w-2xl">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold text-gray-900  mb-3">Jam Belajar</h2>
           </div>

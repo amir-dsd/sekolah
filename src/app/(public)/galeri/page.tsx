@@ -53,7 +53,7 @@ export default async function GaleriPage({
     <div className="flex flex-col min-h-screen">
       {/* Header */}
       <section className="bg-gradient-to-r from-green-800 to-green-600 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto px-8 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-3">Galeri Sekolah</h1>
           <p className="text-green-100 text-lg max-w-xl mx-auto">
             Dokumentasi kegiatan, fasilitas, dan suasana belajar di Haya Bina Insani
@@ -61,7 +61,7 @@ export default async function GaleriPage({
         </div>
       </section>
 
-      <div className="container mx-auto px-4 py-10">
+      <div className="container mx-auto px-8 py-10">
         {/* Filter tabs */}
         <div className="flex flex-wrap gap-2 justify-center mb-10">
           {Object.entries(kategoriLabel).map(([key, label]) => (

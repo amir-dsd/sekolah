@@ -34,7 +34,7 @@ export default async function DaftarPage() {
 
   if (!ppdb) {
     return (
-      <div className="container mx-auto px-4 py-20 text-center">
+      <div className="container mx-auto px-8 py-20 text-center">
         <div className="max-w-md mx-auto">
           <div className="text-6xl mb-4">🚫</div>
           <h1 className="text-2xl font-bold text-gray-900 mb-3">PPDB Belum Dibuka</h1>
@@ -64,12 +64,12 @@ export default async function DaftarPage() {
     return (
       <div className="bg-gray-50 min-h-screen">
         <div className="bg-gradient-to-r from-green-800 to-green-600 text-white py-10">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-8">
             <h1 className="text-2xl md:text-3xl font-bold mb-2">Formulir Pendaftaran PPDB TK</h1>
             <p className="text-green-100">Tahun Ajaran {ppdb.tahun_ajaran}</p>
           </div>
         </div>
-        <div className="container mx-auto px-4 py-16 max-w-lg">
+        <div className="container mx-auto px-8 py-16 max-w-lg">
           <div className="bg-white rounded-2xl shadow-sm border p-8 text-center">
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="h-9 w-9 text-green-600" />
@@ -109,7 +109,7 @@ export default async function DaftarPage() {
   return (
     <div className="bg-gray-50 min-h-screen">
       <div className="bg-gradient-to-r from-green-800 to-green-600 text-white py-10">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <h1 className="text-2xl md:text-3xl font-bold mb-2">Formulir Pendaftaran PPDB TK</h1>
           <p className="text-green-100">Tahun Ajaran {ppdb.tahun_ajaran} · Lengkapi semua data dengan benar</p>
           {user && (
@@ -120,7 +120,7 @@ export default async function DaftarPage() {
           )}
         </div>
       </div>
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-8 py-8 max-w-4xl">
         <FormPendaftaran
           tahunAjaran={ppdb.tahun_ajaran}
           userId={user?.id}

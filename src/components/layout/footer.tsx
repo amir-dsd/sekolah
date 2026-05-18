@@ -5,7 +5,7 @@ import { LogoHBI } from '@/components/logo'
 export function Footer() {
   return (
     <footer className="bg-slate-900  text-white border-t border-slate-800">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center gap-2 font-bold text-lg">

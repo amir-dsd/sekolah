@@ -74,7 +74,7 @@ export default async function PPDBPage() {
     <div className="flex flex-col">
       {/* Header */}
       <section className="bg-gradient-to-r from-green-900 to-green-700 text-white py-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-3">PPDB TK Online</h1>
           <p className="text-green-100 text-lg max-w-2xl">
             Penerimaan Peserta Didik Baru Raudatul Athfal Haya Bina Insani — Daftarkan putra-putri Anda sekarang.
@@ -86,7 +86,7 @@ export default async function PPDBPage() {
         <>
           {/* Info PPDB */}
           <section className="py-10 border-b ">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-8">
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <Card className="border-green-200 bg-green-50">
                   <CardContent className="pt-5 pb-4">
@@ -149,7 +149,7 @@ export default async function PPDBPage() {
         </>
       ) : (
         <section className="py-10 bg-gray-50">
-          <div className="container mx-auto px-4 text-center">
+          <div className="container mx-auto px-8 text-center">
             <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-8 max-w-lg mx-auto">
               <Clock className="h-12 w-12 text-yellow-500 mx-auto mb-3" />
               <h2 className="text-xl font-bold text-gray-900 mb-2">PPDB Belum Dibuka</h2>
@@ -161,7 +161,7 @@ export default async function PPDBPage() {
 
       {/* Alur Pendaftaran */}
       <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-3">Alur Pendaftaran</h2>
             <p className="text-gray-600">Ikuti langkah-langkah berikut untuk mendaftar</p>
@@ -184,7 +184,7 @@ export default async function PPDBPage() {
 
       {/* Persyaratan & Dokumen */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Persyaratan</h2>
@@ -225,7 +225,7 @@ export default async function PPDBPage() {
       {/* CTA */}
       {ppdb && (
         <section className="bg-green-900 text-white py-12">
-          <div className="container mx-auto px-4 text-center">
+          <div className="container mx-auto px-8 text-center">
             <h2 className="text-2xl font-bold mb-3">Siap Mendaftarkan Putra-Putri Anda?</h2>
             <p className="text-green-200 mb-6">Jangan lewatkan kesempatan bergabung bersama Raudatul Athfal Haya Bina Insani</p>
             <Button asChild size="lg" className="bg-yellow-400 text-green-900 hover:bg-yellow-300 font-bold">

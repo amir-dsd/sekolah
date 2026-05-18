@@ -11,14 +11,14 @@ export default function KontakPage() {
   return (
     <div className="flex flex-col">
       <section className="bg-gradient-to-r from-green-800 to-green-600 text-white py-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-3">Hubungi Kami</h1>
           <p className="text-green-100 text-lg">Kami siap membantu pertanyaan Anda tentang sekolah dan PPDB</p>
         </div>
       </section>
 
       <section className="py-16 bg-white ">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             <div className="space-y-6">
               <h2 className="text-2xl font-bold text-gray-900 ">Informasi Kontak</h2>
@@ -143,7 +143,7 @@ export default function KontakPage() {
 
       {/* Peta */}
       <section className="bg-gray-100  py-12">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <h2 className="text-xl font-bold text-gray-900  mb-6 text-center">Lokasi Sekolah</h2>
           <div className="bg-gray-200  rounded-xl h-64 flex items-center justify-center border ">
             <div className="text-center text-gray-500 ">

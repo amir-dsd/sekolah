@@ -41,7 +41,7 @@ export default async function BeritaPage() {
   return (
     <div className="flex flex-col">
       <section className="bg-gradient-to-r from-green-800 to-green-600 text-white py-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           <div className="flex items-center gap-3 mb-4">
             <BookOpen className="h-8 w-8" />
             <h1 className="text-3xl md:text-4xl font-bold">Berita & Pengumuman</h1>
@@ -50,7 +50,7 @@ export default async function BeritaPage() {
         </div>
       </section>
 
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-8 py-12">
         {/* Pengumuman Terbaru */}
         {pengumuman.length > 0 && (
           <div className="mb-12">
