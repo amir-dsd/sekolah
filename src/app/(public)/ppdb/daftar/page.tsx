@@ -49,7 +49,7 @@ export default async function DaftarPage() {
   if (user) {
     const { data } = await supabase
       .from('pendaftaran')
-      .select('nomor_pendaftaran, nama_lengkap, status, created_at, pilihan_jurusan_1')
+      .select('nomor_pendaftaran, nama_lengkap, status, created_at')
       .eq('user_id', user.id)
       .eq('tahun_ajaran', ppdb.tahun_ajaran)
       .single()
@@ -63,10 +63,10 @@ export default async function DaftarPage() {
   if (sudahDaftar) {
     return (
       <div className="bg-gray-50 min-h-screen">
-        <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-10">
+        <div className="bg-gradient-to-r from-green-800 to-green-600 text-white py-10">
           <div className="container mx-auto px-4">
-            <h1 className="text-2xl md:text-3xl font-bold mb-2">Formulir Pendaftaran PPDB</h1>
-            <p className="text-blue-100">Tahun Ajaran {ppdb.tahun_ajaran}</p>
+            <h1 className="text-2xl md:text-3xl font-bold mb-2">Formulir Pendaftaran PPDB TK</h1>
+            <p className="text-green-100">Tahun Ajaran {ppdb.tahun_ajaran}</p>
           </div>
         </div>
         <div className="container mx-auto px-4 py-16 max-w-lg">
@@ -83,15 +83,11 @@ export default async function DaftarPage() {
             <div className="bg-gray-50 rounded-xl p-4 text-left space-y-2 mb-6">
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500">Nomor Pendaftaran</span>
-                <span className="font-bold text-blue-700">{sudahDaftar.nomor_pendaftaran}</span>
+                <span className="font-bold text-green-700">{sudahDaftar.nomor_pendaftaran}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500">Nama</span>
                 <span className="font-medium text-gray-800">{sudahDaftar.nama_lengkap}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Jurusan</span>
-                <span className="font-medium text-gray-800">{sudahDaftar.pilihan_jurusan_1}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500">Tanggal Daftar</span>
@@ -99,7 +95,7 @@ export default async function DaftarPage() {
               </div>
             </div>
 
-            <Button asChild className="w-full bg-blue-700 hover:bg-blue-800">
+            <Button asChild className="w-full bg-green-700 hover:bg-green-800">
               <Link href="/ppdb/status">
                 Cek Status Pendaftaran <ArrowRight className="h-4 w-4 ml-2" />
               </Link>
@@ -112,10 +108,10 @@ export default async function DaftarPage() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-10">
+      <div className="bg-gradient-to-r from-green-800 to-green-600 text-white py-10">
         <div className="container mx-auto px-4">
-          <h1 className="text-2xl md:text-3xl font-bold mb-2">Formulir Pendaftaran PPDB</h1>
-          <p className="text-blue-100">Tahun Ajaran {ppdb.tahun_ajaran} · Lengkapi semua data dengan benar</p>
+          <h1 className="text-2xl md:text-3xl font-bold mb-2">Formulir Pendaftaran PPDB TK</h1>
+          <p className="text-green-100">Tahun Ajaran {ppdb.tahun_ajaran} · Lengkapi semua data dengan benar</p>
           {user && (
             <div className="mt-4 inline-flex items-center gap-2 bg-white/15 rounded-full px-4 py-1.5 text-sm">
               <UserCircle className="h-4 w-4" />

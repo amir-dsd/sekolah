@@ -88,9 +88,6 @@ function HasilStatus({ result }: { result: Pendaftaran }) {
               { label: 'Nomor Pendaftaran', value: result.nomor_pendaftaran },
               { label: 'Tahun Ajaran', value: result.tahun_ajaran },
               { label: 'Nama Lengkap', value: result.nama_lengkap },
-              { label: 'Asal Sekolah', value: result.asal_sekolah },
-              { label: 'Pilihan Jurusan 1', value: result.pilihan_jurusan_1 },
-              { label: 'Pilihan Jurusan 2', value: result.pilihan_jurusan_2 || '-' },
               { label: 'Tanggal Daftar', value: formatDate(result.created_at) },
               { label: 'Terakhir Diperbarui', value: formatDate(result.updated_at) },
             ].map((item) => (

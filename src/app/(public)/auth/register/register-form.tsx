@@ -69,10 +69,10 @@ export function RegisterForm() {
           <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
           <h2 className="text-xl font-bold text-gray-900 mb-2">Cek Email Anda!</h2>
           <p className="text-gray-600 mb-1">Kami mengirim link konfirmasi ke:</p>
-          <p className="font-semibold text-blue-700 mb-6">{email}</p>
+          <p className="font-semibold text-green-700 mb-6">{email}</p>
           <p className="text-sm text-gray-500 mb-6">Klik link di email tersebut untuk mengaktifkan akun Anda, lalu login untuk melanjutkan pendaftaran.</p>
           <Link href="/auth/login">
-            <Button className="bg-blue-700 hover:bg-blue-800">Ke Halaman Login</Button>
+            <Button className="bg-green-700 hover:bg-green-800">Ke Halaman Login</Button>
           </Link>
         </CardContent>
       </Card>
@@ -82,7 +82,7 @@ export function RegisterForm() {
   return (
     <Card className="w-full max-w-md mx-auto shadow-lg">
       <CardHeader className="text-center pb-4">
-        <div className="w-14 h-14 bg-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-3">
+        <div className="w-14 h-14 bg-green-700 rounded-2xl flex items-center justify-center mx-auto mb-3">
           <GraduationCap className="h-8 w-8 text-white" />
         </div>
         <CardTitle className="text-2xl font-bold">Buat Akun Siswa</CardTitle>
@@ -144,7 +144,7 @@ export function RegisterForm() {
             </div>
           )}
 
-          <Button type="submit" disabled={isLoading} className="w-full bg-blue-700 hover:bg-blue-800 h-11 text-base font-semibold">
+          <Button type="submit" disabled={isLoading} className="w-full bg-green-700 hover:bg-green-800 h-11 text-base font-semibold">
             {isLoading
               ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" /> Mendaftarkan...</>
               : 'Buat Akun'}
@@ -152,7 +152,7 @@ export function RegisterForm() {
 
           <p className="text-center text-sm text-gray-500">
             Sudah punya akun?{' '}
-            <Link href="/auth/login" className="text-blue-700 hover:underline font-semibold">
+            <Link href="/auth/login" className="text-green-700 hover:underline font-semibold">
               Masuk di sini
             </Link>
           </p>

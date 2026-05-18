@@ -59,17 +59,17 @@ const ekskul = [
 ]
 
 const warnaBg: Record<string, string> = {
-  blue: 'bg-blue-50 border-blue-200',
+  blue: 'bg-green-50 border-green-200',
   green: 'bg-green-50 border-green-200',
   purple: 'bg-purple-50 border-purple-200',
 }
 const warnaText: Record<string, string> = {
-  blue: 'text-blue-700',
+  blue: 'text-green-700',
   green: 'text-green-700',
   purple: 'text-purple-700',
 }
 const warnaIcon: Record<string, string> = {
-  blue: 'bg-blue-100 text-blue-700',
+  blue: 'bg-green-100 text-green-700',
   green: 'bg-green-100 text-green-700',
   purple: 'bg-purple-100 text-purple-700',
 }
@@ -77,13 +77,13 @@ const warnaIcon: Record<string, string> = {
 export default function ProgramPage() {
   return (
     <div className="flex flex-col">
-      <section className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-16">
+      <section className="bg-gradient-to-r from-green-800 to-green-600 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-3 mb-4">
             <BookOpen className="h-8 w-8" />
             <h1 className="text-3xl md:text-4xl font-bold">Program Studi</h1>
           </div>
-          <p className="text-blue-100 text-lg max-w-2xl">
+          <p className="text-green-100 text-lg max-w-2xl">
             Tiga program jurusan unggulan yang dirancang untuk mengembangkan potensi terbaik setiap siswa.
           </p>
         </div>
@@ -153,7 +153,7 @@ export default function ProgramPage() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 max-w-4xl mx-auto">
             {ekskul.map((item) => (
-              <div key={item.nama} className="bg-white  border  rounded-lg p-3 text-center hover:border-blue-300  hover:shadow-sm transition-all">
+              <div key={item.nama} className="bg-white  border  rounded-lg p-3 text-center hover:border-green-300  hover:shadow-sm transition-all">
                 <div className="text-sm font-medium text-gray-800 ">{item.nama}</div>
                 <div className="text-xs text-gray-400  mt-1">{item.kategori}</div>
               </div>
@@ -179,7 +179,7 @@ export default function ProgramPage() {
                 ].map((item) => (
                   <div key={item.hari} className="flex items-center justify-between py-2 border-b  last:border-b-0">
                     <div className="flex items-center gap-2 text-gray-700 ">
-                      <Clock className="h-4 w-4 text-blue-500 " />
+                      <Clock className="h-4 w-4 text-green-500 " />
                       <span className="font-medium">{item.hari}</span>
                     </div>
                     <span className="text-gray-600  text-sm">{item.jam}</span>

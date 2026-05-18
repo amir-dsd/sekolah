@@ -52,10 +52,10 @@ export default async function GaleriPage({
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
-      <section className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-16">
+      <section className="bg-gradient-to-r from-green-800 to-green-600 text-white py-16">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-3">Galeri Sekolah</h1>
-          <p className="text-blue-100 text-lg max-w-xl mx-auto">
+          <p className="text-green-100 text-lg max-w-xl mx-auto">
             Dokumentasi kegiatan, fasilitas, dan suasana belajar di Haya Bina Insani
           </p>
         </div>
@@ -70,8 +70,8 @@ export default async function GaleriPage({
               href={key === 'semua' ? '/galeri' : `/galeri?kategori=${key}`}
               className={`px-5 py-2 rounded-full text-sm font-semibold transition-all border ${
                 aktif === key
-                  ? 'bg-blue-700 text-white border-blue-700 shadow-md'
-                  : 'bg-white text-gray-600 border-gray-200 hover:border-blue-300 hover:text-blue-700'
+                  ? 'bg-green-700 text-white border-green-700 shadow-md'
+                  : 'bg-white text-gray-600 border-gray-200 hover:border-green-300 hover:text-green-700'
               }`}
             >
               {label}

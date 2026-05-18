@@ -53,7 +53,7 @@ export default async function BeritaDetailPage({ params }: Props) {
         </Button>
 
         <article className="bg-white  rounded-xl shadow-sm overflow-hidden">
-          <div className="h-60 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+          <div className="h-60 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
             <div className="text-6xl">📰</div>
           </div>
 

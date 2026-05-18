@@ -20,16 +20,16 @@ export interface Pendaftaran {
   kode_pos?: string
   no_telepon: string
   email: string
-  asal_sekolah: string
+  asal_sekolah?: string
   npsn_sekolah?: string
-  tahun_lulus: number
+  tahun_lulus?: number
   nama_ayah: string
   pekerjaan_ayah?: string
   nama_ibu: string
   pekerjaan_ibu?: string
   no_telepon_ortu: string
   penghasilan_ortu?: string
-  pilihan_jurusan_1: string
+  pilihan_jurusan_1?: string
   pilihan_jurusan_2?: string
   status: StatusPendaftaran
   catatan_admin?: string

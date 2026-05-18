@@ -167,7 +167,7 @@ export default async function AdminPage() {
                   <div key={p.id} className="px-4 py-3 flex items-center justify-between gap-3">
                     <div className="min-w-0">
                       <p className="font-semibold text-gray-900 text-sm truncate">{p.nama_lengkap}</p>
-                      <p className="text-xs text-gray-400">{p.pilihan_jurusan_1} · {formatDate(p.created_at)}</p>
+                      <p className="text-xs text-gray-400">{formatDate(p.created_at)}</p>
                     </div>
                     <span className={`text-xs px-2 py-0.5 rounded-full font-semibold shrink-0 ${statusBadge[p.status]}`}>
                       {p.status.charAt(0).toUpperCase() + p.status.slice(1)}
@@ -180,7 +180,7 @@ export default async function AdminPage() {
                 <table className="w-full text-sm">
                   <thead className="bg-gray-50 text-left">
                     <tr>
-                      {['No. Pendaftaran','Nama','Asal Sekolah','Jurusan','Status','Tanggal'].map(h => (
+                      {['No. Pendaftaran','Nama','Status','Tanggal'].map(h => (
                         <th key={h} className="py-2.5 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wide">{h}</th>
                       ))}
                     </tr>
@@ -188,10 +188,8 @@ export default async function AdminPage() {
                   <tbody className="divide-y divide-gray-50">
                     {terbaru.map(p => (
                       <tr key={p.id} className="hover:bg-gray-50/60 transition-colors">
-                        <td className="py-3 px-4 font-mono text-xs text-blue-600">{p.nomor_pendaftaran}</td>
+                        <td className="py-3 px-4 font-mono text-xs text-green-600">{p.nomor_pendaftaran}</td>
                         <td className="py-3 px-4 font-semibold text-gray-900">{p.nama_lengkap}</td>
-                        <td className="py-3 px-4 text-gray-500 max-w-[160px] truncate">{p.asal_sekolah}</td>
-                        <td className="py-3 px-4 text-gray-700">{p.pilihan_jurusan_1}</td>
                         <td className="py-3 px-4">
                           <span className={`text-xs px-2.5 py-1 rounded-full font-semibold ${statusBadge[p.status]}`}>
                             {p.status.charAt(0).toUpperCase() + p.status.slice(1)}

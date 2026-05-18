@@ -48,11 +48,11 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 font-bold text-blue-700 hover:opacity-90 transition-opacity">
+          <Link href="/" className="flex items-center gap-2.5 font-bold text-green-700 hover:opacity-90 transition-opacity">
             <LogoHBI size={36} />
             <div className="leading-tight">
-              <span className="hidden sm:block text-sm font-extrabold tracking-tight text-blue-800">Haya Bina Insani</span>
-              <span className="block sm:hidden text-sm font-extrabold text-blue-800">HBI</span>
+              <span className="hidden sm:block text-sm font-extrabold tracking-tight text-green-800">Haya Bina Insani</span>
+              <span className="block sm:hidden text-sm font-extrabold text-green-800">HBI</span>
             </div>
           </Link>
 
@@ -66,7 +66,7 @@ export function Navbar() {
                   href={item.href}
                   className={cn(
                     'px-3 py-1.5 rounded-lg text-sm font-medium transition-all',
-                    active ? 'bg-blue-50 text-blue-700' : 'text-gray-600 hover:text-blue-700 hover:bg-gray-50'
+                    active ? 'bg-green-50 text-green-700' : 'text-gray-600 hover:text-green-700 hover:bg-gray-50'
                   )}
                 >
                   {item.label}
@@ -80,12 +80,12 @@ export function Navbar() {
             {user ? (
               <>
                 <div className="flex items-center gap-1.5 text-sm text-gray-600 px-3 py-1.5">
-                  <UserCircle className="h-4 w-4 text-blue-600" />
+                  <UserCircle className="h-4 w-4 text-green-600" />
                   <span className="font-medium max-w-[140px] truncate">{nama}</span>
                 </div>
                 <Link
                   href="/ppdb/status"
-                  className="text-sm text-gray-500 hover:text-blue-700 font-medium px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-all"
+                  className="text-sm text-gray-500 hover:text-green-700 font-medium px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-all"
                 >
                   Status Saya
                 </Link>
@@ -100,7 +100,7 @@ export function Navbar() {
               <>
                 <Link
                   href="/ppdb/status"
-                  className="text-sm text-gray-500 hover:text-blue-700 font-medium px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-all"
+                  className="text-sm text-gray-500 hover:text-green-700 font-medium px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-all"
                 >
                   Cek Status
                 </Link>
@@ -112,7 +112,7 @@ export function Navbar() {
                 </Link>
                 <Link
                   href="/ppdb/daftar"
-                  className="text-sm bg-blue-700 hover:bg-blue-800 text-white font-semibold px-4 py-2 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-px"
+                  className="text-sm bg-green-700 hover:bg-green-800 text-white font-semibold px-4 py-2 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-px"
                 >
                   Daftar PPDB
                 </Link>
@@ -145,7 +145,7 @@ export function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     'block px-3 py-2.5 rounded-xl text-sm font-medium transition-all',
-                    active ? 'bg-blue-50 text-blue-700' : 'text-gray-600 hover:bg-gray-50 hover:text-blue-700'
+                    active ? 'bg-green-50 text-green-700' : 'text-gray-600 hover:bg-gray-50 hover:text-green-700'
                   )}
                 >
                   {item.label}
@@ -155,9 +155,9 @@ export function Navbar() {
 
             {user ? (
               <div className="pt-3 pb-1 space-y-2">
-                <div className="flex items-center gap-2 px-3 py-2 bg-blue-50 rounded-xl">
-                  <UserCircle className="h-4 w-4 text-blue-600 shrink-0" />
-                  <span className="text-sm font-medium text-blue-800 truncate">{nama}</span>
+                <div className="flex items-center gap-2 px-3 py-2 bg-green-50 rounded-xl">
+                  <UserCircle className="h-4 w-4 text-green-600 shrink-0" />
+                  <span className="text-sm font-medium text-green-800 truncate">{nama}</span>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <Link
@@ -187,7 +187,7 @@ export function Navbar() {
                 <Link
                   href="/ppdb/daftar"
                   onClick={() => setIsOpen(false)}
-                  className="text-center text-sm bg-blue-700 text-white font-semibold py-2.5 rounded-xl hover:bg-blue-800 transition-colors"
+                  className="text-center text-sm bg-green-700 text-white font-semibold py-2.5 rounded-xl hover:bg-green-800 transition-colors"
                 >
                   Daftar PPDB
                 </Link>

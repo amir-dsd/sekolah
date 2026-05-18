@@ -47,7 +47,7 @@ const programs = [
   {
     nama: 'MIPA',
     deskripsi: 'Matematika dan Ilmu Pengetahuan Alam — mencetak ilmuwan dan teknolog masa depan.',
-    warna: 'bg-blue-100 text-blue-700',
+    warna: 'bg-green-100 text-green-700',
   },
   {
     nama: 'IPS',
@@ -73,9 +73,9 @@ export default async function HomePage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 text-white overflow-hidden">
+      <section className="relative bg-gradient-to-br from-green-950 via-green-900 to-green-800 text-white overflow-hidden">
         {/* Decorative circles */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-700/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-green-700/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
 
         <div className="container mx-auto px-4 py-16 sm:py-24 relative">
@@ -92,11 +92,11 @@ export default async function HomePage() {
                 <span className="text-yellow-400">Haya Bina</span><br />
                 Insani
               </h1>
-              <p className="text-lg sm:text-xl text-blue-100 mb-8 max-w-xl leading-relaxed">
+              <p className="text-lg sm:text-xl text-green-100 mb-8 max-w-xl leading-relaxed">
                 Sekolah unggulan berakreditasi A yang berkomitmen mencetak generasi beriman, berprestasi, dan berdaya saing global.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button asChild size="lg" className="bg-yellow-400 text-blue-900 hover:bg-yellow-300 font-bold shadow-lg shadow-yellow-400/30 hover:shadow-yellow-400/50 transition-all hover:-translate-y-0.5">
+                <Button asChild size="lg" className="bg-yellow-400 text-green-900 hover:bg-yellow-300 font-bold shadow-lg shadow-yellow-400/30 hover:shadow-yellow-400/50 transition-all hover:-translate-y-0.5">
                   <Link href="/ppdb/daftar">
                     Daftar PPDB Sekarang <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
@@ -108,17 +108,17 @@ export default async function HomePage() {
             </div>
             {/* Hero image */}
             <div className="hidden lg:block relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-blue-950/50 border border-white/10">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-green-950/50 border border-white/10">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=700&q=80"
                   alt="Suasana sekolah Haya Bina Insani"
                   className="w-full h-80 object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-green-900/40 to-transparent" />
               </div>
               {/* Floating badge */}
-              <div className="absolute -bottom-4 -left-4 bg-yellow-400 text-blue-900 rounded-2xl px-5 py-3 shadow-xl">
+              <div className="absolute -bottom-4 -left-4 bg-yellow-400 text-green-900 rounded-2xl px-5 py-3 shadow-xl">
                 <p className="text-xs font-semibold">Akreditasi</p>
                 <p className="text-2xl font-black leading-tight">A</p>
                 <p className="text-xs font-semibold">Unggul</p>
@@ -134,10 +134,10 @@ export default async function HomePage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map(({ icon: Icon, label, value }) => (
               <div key={label} className="flex flex-col items-center text-center p-4">
-                <div className="w-12 h-12 bg-blue-100  rounded-full flex items-center justify-center mb-3">
-                  <Icon className="h-6 w-6 text-blue-700 " />
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-3">
+                  <Icon className="h-6 w-6 text-green-700" />
                 </div>
-                <div className="text-3xl font-bold text-blue-900 ">{value}</div>
+                <div className="text-3xl font-bold text-green-900">{value}</div>
                 <div className="text-sm text-gray-500  mt-1">{label}</div>
               </div>
             ))}
@@ -167,7 +167,7 @@ export default async function HomePage() {
                 <Button asChild variant="outline">
                   <Link href="/ppdb/status">Cek Status</Link>
                 </Button>
-                <Button asChild className="bg-blue-700 hover:bg-blue-800">
+                <Button asChild className="bg-green-700 hover:bg-green-800">
                   <Link href="/ppdb/daftar">Daftar Sekarang</Link>
                 </Button>
               </div>
@@ -184,9 +184,9 @@ export default async function HomePage() {
             <p className="text-gray-600 ">Landasan kami dalam mendidik generasi penerus bangsa</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="border-l-4 border-l-blue-700">
+            <Card className="border-l-4 border-l-green-700">
               <CardHeader>
-                <CardTitle className="text-blue-700  text-xl">Visi</CardTitle>
+                <CardTitle className="text-green-700 text-xl">Visi</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-700  leading-relaxed">
@@ -284,7 +284,7 @@ export default async function HomePage() {
                     <p className="text-gray-600  text-sm line-clamp-2 mb-3">{berita.ringkasan}</p>
                     <div className="flex items-center justify-between">
                       <span className="text-xs text-gray-400 ">{formatDate(berita.created_at)}</span>
-                      <Link href={`/berita/${berita.slug}`} className="text-sm text-blue-700 hover:underline font-medium">
+                      <Link href={`/berita/${berita.slug}`} className="text-sm text-green-700 hover:underline font-medium">
                         Baca →
                       </Link>
                     </div>

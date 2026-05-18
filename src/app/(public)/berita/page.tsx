@@ -40,13 +40,13 @@ export default async function BeritaPage() {
 
   return (
     <div className="flex flex-col">
-      <section className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-16">
+      <section className="bg-gradient-to-r from-green-800 to-green-600 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-3 mb-4">
             <BookOpen className="h-8 w-8" />
             <h1 className="text-3xl md:text-4xl font-bold">Berita & Pengumuman</h1>
           </div>
-          <p className="text-blue-100 text-lg">Informasi terkini dari Haya Bina Insani</p>
+          <p className="text-green-100 text-lg">Informasi terkini dari Haya Bina Insani</p>
         </div>
       </section>
 
@@ -55,21 +55,21 @@ export default async function BeritaPage() {
         {pengumuman.length > 0 && (
           <div className="mb-12">
             <div className="flex items-center gap-2 mb-6">
-              <Megaphone className="h-5 w-5 text-blue-700 " />
+              <Megaphone className="h-5 w-5 text-green-700 " />
               <h2 className="text-xl font-bold text-gray-900 ">Pengumuman Terbaru</h2>
             </div>
             <div className="space-y-3">
               {pengumuman.slice(0, 3).map((berita) => (
                 <Link key={berita.id} href={`/berita/${berita.slug}`}>
-                  <div className="flex items-center gap-4 p-4 bg-blue-50  border border-blue-100  rounded-lg hover:border-blue-300  hover:shadow-sm transition-all">
-                    <div className="w-8 h-8 bg-blue-100  rounded-full flex items-center justify-center shrink-0">
-                      <Megaphone className="h-4 w-4 text-blue-700 " />
+                  <div className="flex items-center gap-4 p-4 bg-green-50  border border-green-100  rounded-lg hover:border-green-300  hover:shadow-sm transition-all">
+                    <div className="w-8 h-8 bg-green-100  rounded-full flex items-center justify-center shrink-0">
+                      <Megaphone className="h-4 w-4 text-green-700 " />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-gray-900  truncate">{berita.judul}</p>
                       <p className="text-xs text-gray-500 ">{formatDate(berita.created_at)}</p>
                     </div>
-                    <span className="text-blue-700  text-sm shrink-0">Baca →</span>
+                    <span className="text-green-700  text-sm shrink-0">Baca →</span>
                   </div>
                 </Link>
               ))}
@@ -87,8 +87,8 @@ export default async function BeritaPage() {
                 const Icon = config.icon
                 return (
                   <Card key={berita.id} className="hover:shadow-md transition-shadow overflow-hidden">
-                    <div className="h-40 bg-gradient-to-br from-blue-50 to-blue-100   flex items-center justify-center">
-                      <Icon className="h-14 w-14 text-blue-300 " />
+                    <div className="h-40 bg-gradient-to-br from-green-50 to-green-100   flex items-center justify-center">
+                      <Icon className="h-14 w-14 text-green-300 " />
                     </div>
                     <CardHeader className="pb-2">
                       <Badge variant={config.variant} className="w-fit mb-2 capitalize">
@@ -102,7 +102,7 @@ export default async function BeritaPage() {
                       <p className="text-gray-500  text-sm line-clamp-2 mb-4">{berita.ringkasan}</p>
                       <div className="flex items-center justify-between text-sm">
                         <span className="text-gray-400  text-xs">{formatDate(berita.created_at)}</span>
-                        <Link href={`/berita/${berita.slug}`} className="text-blue-700  hover:underline font-medium text-sm">
+                        <Link href={`/berita/${berita.slug}`} className="text-green-700  hover:underline font-medium text-sm">
                           Baca selengkapnya →
                         </Link>
                       </div>

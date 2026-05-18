@@ -32,10 +32,10 @@ CREATE TABLE pendaftaran (
   kode_pos VARCHAR(10),
   no_telepon VARCHAR(20) NOT NULL,
   email VARCHAR(100) NOT NULL,
-  -- Asal Sekolah
-  asal_sekolah VARCHAR(100) NOT NULL,
+  -- Asal Sekolah (opsional untuk TK)
+  asal_sekolah VARCHAR(100),
   npsn_sekolah VARCHAR(20),
-  tahun_lulus INTEGER NOT NULL,
+  tahun_lulus INTEGER,
   -- Data Orang Tua
   nama_ayah VARCHAR(100) NOT NULL,
   pekerjaan_ayah VARCHAR(100),
@@ -43,8 +43,8 @@ CREATE TABLE pendaftaran (
   pekerjaan_ibu VARCHAR(100),
   no_telepon_ortu VARCHAR(20) NOT NULL,
   penghasilan_ortu VARCHAR(50),
-  -- Pilihan Jurusan
-  pilihan_jurusan_1 VARCHAR(100) NOT NULL,
+  -- Pilihan Jurusan (tidak digunakan untuk TK)
+  pilihan_jurusan_1 VARCHAR(100),
   pilihan_jurusan_2 VARCHAR(100),
   -- Status
   status VARCHAR(20) DEFAULT 'menunggu', -- menunggu, diverifikasi, diterima, ditolak

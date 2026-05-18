@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 export default function KontakPage() {
   return (
     <div className="flex flex-col">
-      <section className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-16">
+      <section className="bg-gradient-to-r from-green-800 to-green-600 text-white py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl md:text-4xl font-bold mb-3">Hubungi Kami</h1>
-          <p className="text-blue-100 text-lg">Kami siap membantu pertanyaan Anda tentang sekolah dan PPDB</p>
+          <p className="text-green-100 text-lg">Kami siap membantu pertanyaan Anda tentang sekolah dan PPDB</p>
         </div>
       </section>
 
@@ -25,8 +25,8 @@ export default function KontakPage() {
 
               <div className="space-y-4">
                 <div className="flex items-start gap-4 p-4 bg-gray-50  rounded-xl">
-                  <div className="w-10 h-10 bg-blue-100  rounded-full flex items-center justify-center shrink-0">
-                    <MapPin className="h-5 w-5 text-blue-700 " />
+                  <div className="w-10 h-10 bg-green-100  rounded-full flex items-center justify-center shrink-0">
+                    <MapPin className="h-5 w-5 text-green-700 " />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 ">Alamat</h3>
@@ -35,8 +35,8 @@ export default function KontakPage() {
                 </div>
 
                 <div className="flex items-start gap-4 p-4 bg-gray-50  rounded-xl">
-                  <div className="w-10 h-10 bg-blue-100  rounded-full flex items-center justify-center shrink-0">
-                    <Phone className="h-5 w-5 text-blue-700 " />
+                  <div className="w-10 h-10 bg-green-100  rounded-full flex items-center justify-center shrink-0">
+                    <Phone className="h-5 w-5 text-green-700 " />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 ">Telepon</h3>
@@ -46,8 +46,8 @@ export default function KontakPage() {
                 </div>
 
                 <div className="flex items-start gap-4 p-4 bg-gray-50  rounded-xl">
-                  <div className="w-10 h-10 bg-blue-100  rounded-full flex items-center justify-center shrink-0">
-                    <Mail className="h-5 w-5 text-blue-700 " />
+                  <div className="w-10 h-10 bg-green-100  rounded-full flex items-center justify-center shrink-0">
+                    <Mail className="h-5 w-5 text-green-700 " />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 ">Email</h3>
@@ -57,8 +57,8 @@ export default function KontakPage() {
                 </div>
 
                 <div className="flex items-start gap-4 p-4 bg-gray-50  rounded-xl">
-                  <div className="w-10 h-10 bg-blue-100  rounded-full flex items-center justify-center shrink-0">
-                    <Clock className="h-5 w-5 text-blue-700 " />
+                  <div className="w-10 h-10 bg-green-100  rounded-full flex items-center justify-center shrink-0">
+                    <Clock className="h-5 w-5 text-green-700 " />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 ">Jam Operasional</h3>
@@ -78,7 +78,7 @@ export default function KontakPage() {
                     { label: 'YouTube', handle: 'Haya Bina Insani' },
                   ].map(({ label, handle }) => (
                     <div key={label} className="flex flex-col items-center bg-gray-100  rounded-lg px-3 py-2">
-                      <span className="text-xs font-semibold text-blue-700 ">{label}</span>
+                      <span className="text-xs font-semibold text-green-700 ">{label}</span>
                       <span className="text-xs text-gray-500 ">{handle}</span>
                     </div>
                   ))}
@@ -99,7 +99,7 @@ export default function KontakPage() {
                         <input
                           type="text"
                           placeholder="Nama Anda"
-                          className="w-full px-3 py-2 border border-gray-300  rounded-md text-sm bg-white  text-gray-900  placeholder:text-gray-400  focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-3 py-2 border border-gray-300  rounded-md text-sm bg-white  text-gray-900  placeholder:text-gray-400  focus:outline-none focus:ring-2 focus:ring-green-500"
                         />
                       </div>
                       <div>
@@ -107,7 +107,7 @@ export default function KontakPage() {
                         <input
                           type="email"
                           placeholder="email@contoh.com"
-                          className="w-full px-3 py-2 border border-gray-300  rounded-md text-sm bg-white  text-gray-900  placeholder:text-gray-400  focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-3 py-2 border border-gray-300  rounded-md text-sm bg-white  text-gray-900  placeholder:text-gray-400  focus:outline-none focus:ring-2 focus:ring-green-500"
                         />
                       </div>
                     </div>
@@ -116,7 +116,7 @@ export default function KontakPage() {
                       <input
                         type="text"
                         placeholder="Perihal pesan"
-                        className="w-full px-3 py-2 border border-gray-300  rounded-md text-sm bg-white  text-gray-900  placeholder:text-gray-400  focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300  rounded-md text-sm bg-white  text-gray-900  placeholder:text-gray-400  focus:outline-none focus:ring-2 focus:ring-green-500"
                       />
                     </div>
                     <div>
@@ -124,12 +124,12 @@ export default function KontakPage() {
                       <textarea
                         rows={5}
                         placeholder="Tulis pesan Anda di sini..."
-                        className="w-full px-3 py-2 border border-gray-300  rounded-md text-sm bg-white  text-gray-900  placeholder:text-gray-400  focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                        className="w-full px-3 py-2 border border-gray-300  rounded-md text-sm bg-white  text-gray-900  placeholder:text-gray-400  focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
                       />
                     </div>
                     <button
                       type="submit"
-                      className="w-full bg-blue-700 text-white py-2 px-4 rounded-md hover:bg-blue-800 transition-colors font-medium text-sm"
+                      className="w-full bg-green-700 text-white py-2 px-4 rounded-md hover:bg-green-800 transition-colors font-medium text-sm"
                     >
                       Kirim Pesan
                     </button>

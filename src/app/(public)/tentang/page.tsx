@@ -33,13 +33,13 @@ export default function TentangPage() {
   return (
     <div className="flex flex-col">
       {/* Header */}
-      <section className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-16">
+      <section className="bg-gradient-to-r from-green-800 to-green-600 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-3 mb-4">
             <GraduationCap className="h-8 w-8" />
             <h1 className="text-3xl md:text-4xl font-bold">Tentang Sekolah</h1>
           </div>
-          <p className="text-blue-100 text-lg max-w-2xl">
+          <p className="text-green-100 text-lg max-w-2xl">
             Mengenal lebih dalam Haya Bina Insani — sejarah, visi, dan komitmen kami untuk pendidikan berkualitas.
           </p>
         </div>
@@ -54,12 +54,12 @@ export default function TentangPage() {
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Visi */}
-            <div className="bg-blue-50 border border-blue-100 rounded-2xl p-8">
+            <div className="bg-green-50 border border-green-100 rounded-2xl p-8">
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-11 h-11 bg-blue-700 rounded-xl flex items-center justify-center">
+                <div className="w-11 h-11 bg-green-700 rounded-xl flex items-center justify-center">
                   <Eye className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-blue-800">Visi</h3>
+                <h3 className="text-xl font-bold text-green-800">Visi</h3>
               </div>
               <p className="text-gray-700 leading-relaxed text-base font-medium italic">
                 "Mewujudkan lulusan yang beriman, berakhlak mulia, berprestasi, berbudaya, dan berwawasan global."
@@ -141,8 +141,8 @@ export default function TentangPage() {
             {nilaiSekolah.map(({ icon: Icon, label, deskripsi }) => (
               <Card key={label} className="text-center hover:shadow-md transition-shadow">
                 <CardContent className="pt-8 pb-6">
-                  <div className="w-14 h-14 bg-blue-100  rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon className="h-7 w-7 text-blue-700 " />
+                  <div className="w-14 h-14 bg-green-100  rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon className="h-7 w-7 text-green-700 " />
                   </div>
                   <h3 className="font-bold text-gray-900  mb-2">{label}</h3>
                   <p className="text-gray-600  text-sm">{deskripsi}</p>
@@ -165,14 +165,14 @@ export default function TentangPage() {
               {strukturOrganisasi.map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-center justify-between p-4 bg-white  border  rounded-lg hover:border-blue-300  transition-colors"
+                  className="flex items-center justify-between p-4 bg-white  border  rounded-lg hover:border-green-300  transition-colors"
                 >
                   <div>
                     <div className="text-sm text-gray-500 ">{item.jabatan}</div>
                     <div className="font-semibold text-gray-800 ">{item.nama}</div>
                   </div>
                   {i === 0 && (
-                    <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-medium">
+                    <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium">
                       Pimpinan
                     </span>
                   )}
@@ -184,18 +184,18 @@ export default function TentangPage() {
       </section>
 
       {/* Akreditasi */}
-      <section className="bg-blue-900 text-white py-16">
+      <section className="bg-green-900 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold mb-3">Riwayat Akreditasi</h2>
-            <p className="text-blue-200">Pengakuan kualitas pendidikan kami dari lembaga nasional</p>
+            <p className="text-green-200">Pengakuan kualitas pendidikan kami dari lembaga nasional</p>
           </div>
           <div className="flex flex-wrap justify-center gap-6">
             {akreditasi.map((item) => (
               <div key={item.tahun} className="bg-white/10 rounded-xl p-6 text-center min-w-[160px] border border-white/20">
                 <div className="text-4xl font-black text-yellow-400 mb-1">{item.nilai}</div>
-                <div className="text-sm text-blue-200 mb-1">Tahun {item.tahun}</div>
-                <div className="text-xs text-blue-300">{item.lembaga}</div>
+                <div className="text-sm text-green-200 mb-1">Tahun {item.tahun}</div>
+                <div className="text-xs text-green-300">{item.lembaga}</div>
               </div>
             ))}
           </div>

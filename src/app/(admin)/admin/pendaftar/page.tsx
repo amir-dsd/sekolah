@@ -82,7 +82,7 @@ export default async function PendaftarPage() {
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0">
                       <p className="font-semibold text-gray-900 truncate">{p.nama_lengkap}</p>
-                      <p className="text-xs text-blue-600 font-mono">{p.nomor_pendaftaran}</p>
+                      <p className="text-xs text-green-600 font-mono">{p.nomor_pendaftaran}</p>
                     </div>
                     <UpdateStatusForm
                       pendaftaranId={p.id}
@@ -92,14 +92,6 @@ export default async function PendaftarPage() {
                     />
                   </div>
                   <div className="grid grid-cols-2 gap-2 text-sm">
-                    <div>
-                      <span className="text-gray-400 text-xs">Asal Sekolah</span>
-                      <p className="font-medium text-gray-800 truncate">{p.asal_sekolah}</p>
-                    </div>
-                    <div>
-                      <span className="text-gray-400 text-xs">Jurusan</span>
-                      <p className="font-medium text-gray-800">{p.pilihan_jurusan_1}</p>
-                    </div>
                     <div>
                       <span className="text-gray-400 text-xs">Kontak</span>
                       <p className="font-medium text-gray-800">{p.no_telepon}</p>
@@ -122,7 +114,7 @@ export default async function PendaftarPage() {
                 <table className="w-full text-sm">
                   <thead className="bg-gray-50 border-b">
                     <tr>
-                      {['No. Pendaftaran','Nama','Asal Sekolah','Jurusan','Kontak','Tanggal','Status & Aksi'].map(h => (
+                      {['No. Pendaftaran','Nama','Kota','Kontak','Tanggal','Status & Aksi'].map(h => (
                         <th key={h} className="text-left py-3 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wide whitespace-nowrap">
                           {h}
                         </th>
@@ -131,19 +123,15 @@ export default async function PendaftarPage() {
                   </thead>
                   <tbody className="divide-y divide-gray-50">
                     {list.map(p => (
-                      <tr key={p.id} className="hover:bg-blue-50/40 transition-colors">
-                        <td className="py-3 px-4 font-mono text-xs text-blue-600 whitespace-nowrap">{p.nomor_pendaftaran}</td>
+                      <tr key={p.id} className="hover:bg-green-50/40 transition-colors">
+                        <td className="py-3 px-4 font-mono text-xs text-green-600 whitespace-nowrap">{p.nomor_pendaftaran}</td>
                         <td className="py-3 px-4">
                           <p className="font-semibold text-gray-900 whitespace-nowrap">{p.nama_lengkap}</p>
                           <p className="text-xs text-gray-400">{p.jenis_kelamin} · {p.agama}</p>
                         </td>
-                        <td className="py-3 px-4 text-gray-600 max-w-[180px]">
-                          <p className="truncate">{p.asal_sekolah}</p>
-                          <p className="text-xs text-gray-400">{p.kota}</p>
-                        </td>
-                        <td className="py-3 px-4">
-                          <p className="font-medium text-gray-800">{p.pilihan_jurusan_1}</p>
-                          {p.pilihan_jurusan_2 && <p className="text-xs text-gray-400">Alt: {p.pilihan_jurusan_2}</p>}
+                        <td className="py-3 px-4 text-gray-600">
+                          <p>{p.kota}</p>
+                          <p className="text-xs text-gray-400">{p.provinsi}</p>
                         </td>
                         <td className="py-3 px-4">
                           <p className="text-gray-700">{p.no_telepon}</p>
