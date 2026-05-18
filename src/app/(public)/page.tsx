@@ -101,7 +101,7 @@ export default async function HomePage() {
                     Daftar PPDB Sekarang <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-white/40 text-white hover:bg-white/10 backdrop-blur">
+                <Button asChild size="lg" className="bg-white/15 border border-white/50 text-white hover:bg-white/25 backdrop-blur">
                   <Link href="/tentang">Pelajari Lebih Lanjut</Link>
                 </Button>
               </div>
