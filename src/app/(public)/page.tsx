@@ -78,7 +78,7 @@ export default async function HomePage() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-green-700/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
 
-        <div className="container mx-auto px-4 py-16 sm:py-24 relative">
+        <div className="container mx-auto px-8 sm:px-16 py-16 sm:py-24 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in-up">
               {ppdb && (
