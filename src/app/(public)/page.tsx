@@ -90,9 +90,11 @@ export default async function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in-up">
               {ppdb && (
-                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur rounded-full px-4 py-2 text-sm mb-6 border border-white/20">
-                  <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                  PPDB {ppdb.tahun_ajaran} Sedang Dibuka
+                <div className="flex justify-center">
+                  <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur rounded-full px-4 py-2 text-sm mb-6 border border-white/20">
+                    <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                    PPDB {ppdb.tahun_ajaran} Sedang Dibuka
+                  </div>
                 </div>
               )}
               <h1 className="text-center text-4xl sm:text-5xl md:text-5xl font-black leading-tight mb-6">
