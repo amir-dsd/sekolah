@@ -11,12 +11,13 @@ import type { User } from '@supabase/supabase-js'
 
 const navItems = [
   { href: '/', label: 'Beranda' },
-  { href: '/tentang', label: 'Tentang' },
-  { href: '/program', label: 'Program' },
+  // { href: '/tentang', label: 'Tentang' },
+  // { href: '/program', label: 'Program' },
   { href: '/galeri', label: 'Galeri' },
-  { href: '/berita', label: 'Berita' },
+  // { href: '/berita', label: 'Berita' },
   { href: '/ppdb', label: 'PPDB' },
   { href: '/kontak', label: 'Kontak' },
+  { href: '/ppdb/status', label: 'Cek Status' },
 ]
 
 export function Navbar() {
@@ -98,12 +99,6 @@ export function Navbar() {
               </>
             ) : (
               <>
-                <Link
-                  href="/ppdb/status"
-                  className="text-sm text-gray-500 hover:text-green-700 font-medium px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-all"
-                >
-                  Cek Status
-                </Link>
                 <Link
                   href="/auth/login"
                   className="text-sm border border-gray-300 text-gray-700 font-semibold px-4 py-2 rounded-xl hover:bg-gray-50 transition-all"
