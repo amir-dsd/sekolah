@@ -145,7 +145,7 @@ export function CekStatusForm({
     <div className="space-y-6">
       {/* Auto-loaded for logged-in users */}
       {isLoggedIn && pendaftaranAwal && (
-        <div className="bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 text-sm text-blue-700">
+        <div className="bg-green-100 border border-green-200 rounded-xl px-4 py-3 text-sm text-green-700">
           Menampilkan status pendaftaran akun Anda secara otomatis.
         </div>
       )}
@@ -163,13 +163,21 @@ export function CekStatusForm({
                   onChange={(e) => setNomor(e.target.value)}
                   placeholder="Contoh: PPDB-20252026-0001"
                   className="mt-1 uppercase"
-                  onKeyDown={(e) => e.key === 'Enter' && handleCek()}
+                  onKeyDown={(e) => e.key === "Enter" && handleCek()}
                 />
                 {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
               </div>
               <div className="flex items-end">
-                <Button onClick={handleCek} disabled={isLoading} className="bg-blue-700 hover:bg-blue-800">
-                  {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Search className="h-4 w-4" />}
+                <Button
+                  onClick={handleCek}
+                  disabled={isLoading}
+                  className="bg-green-700 hover:bg-green-800"
+                >
+                  {isLoading ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Search className="h-4 w-4" />
+                  )}
                   <span className="ml-2 hidden sm:block">Cek Status</span>
                 </Button>
               </div>
@@ -180,13 +188,15 @@ export function CekStatusForm({
 
       {result && <HasilStatus result={result} />}
 
-      <Card className="bg-blue-50 border-blue-100">
+      <Card className="bg-green-100 border-green-200">
         <CardContent className="pt-5 pb-4">
-          <p className="text-sm text-blue-700">
-            <strong>Butuh bantuan?</strong> Hubungi panitia PPDB di nomor <strong>(021) 1234-5678</strong> atau email <strong>ppdb@hayabinainsani.sch.id</strong>
+          <p className="text-sm text-green-700">
+            <strong>Butuh bantuan?</strong> Hubungi panitia PPDB di nomor{" "}
+            <strong>(021) 1234-5678</strong> atau email{" "}
+            <strong>ppdb@hayabinainsani.sch.id</strong>
           </p>
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

@@ -26,7 +26,7 @@ export default async function StatusPage() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-14">
+      <div className="bg-gradient-to-r from-green-800 to-green-600 text-white py-14">
         <div className="container mx-auto px-8 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-3">Cek Status Pendaftaran</h1>
           <p className="text-blue-100 text-lg">

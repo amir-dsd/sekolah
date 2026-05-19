@@ -51,9 +51,9 @@ const persyaratan = [
 const dokumenDibutuhkan = [
   { nama: 'Akta Kelahiran', keterangan: 'Fotokopi yang jelas', wajib: true },
   { nama: 'Kartu Keluarga', keterangan: 'Fotokopi', wajib: true },
-  { nama: 'Foto terbaru 3×4', keterangan: 'Background merah, pakaian rapi', wajib: true },
-  { nama: 'KTP Orang Tua / Wali', keterangan: 'Fotokopi', wajib: true },
-  { nama: 'Sertifikat Vaksin Anak', keterangan: 'Jika ada', wajib: false },
+  // { nama: 'Foto terbaru 3×4', keterangan: 'Background merah, pakaian rapi', wajib: true },
+  // { nama: 'KTP Orang Tua / Wali', keterangan: 'Fotokopi', wajib: true },
+  // { nama: 'Sertifikat Vaksin Anak', keterangan: 'Jika ada', wajib: false },
 ]
 
 const alurPendaftaran = [
@@ -73,7 +73,7 @@ export default async function PPDBPage() {
   return (
     <div className="flex flex-col">
       {/* Header */}
-      <section className="bg-gradient-to-r from-green-900 to-green-700 text-white py-16">
+      <section className="bg-gradient-to-r from-green-800 to-green-600 text-white py-16">
         <div className="container mx-auto px-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-3">PPDB TK Online</h1>
           <p className="text-green-100 text-lg max-w-2xl">
