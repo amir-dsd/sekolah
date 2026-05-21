@@ -69,9 +69,6 @@ export default async function AdminPage() {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <Link href="/admin/berita" className="hidden sm:flex text-sm text-gray-600 hover:text-blue-700 font-medium px-3 py-1.5 rounded-lg hover:bg-blue-50 transition-colors">
-              Berita
-            </Link>
             <Link href="/admin/pendaftar" className="hidden sm:flex text-sm text-gray-600 hover:text-blue-700 font-medium px-3 py-1.5 rounded-lg hover:bg-blue-50 transition-colors">
               Pendaftar
             </Link>
