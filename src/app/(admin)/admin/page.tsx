@@ -54,7 +54,6 @@ export default async function AdminPage() {
     { label: 'Diverifikasi',    val: stats.diverifikasi, icon: FileCheck,  color: 'text-indigo-600', bg: 'bg-indigo-50', border: 'border-indigo-100' },
     { label: 'Diterima',        val: stats.diterima,     icon: CheckCircle,color: 'text-green-600',  bg: 'bg-green-50',  border: 'border-green-100' },
     { label: 'Ditolak',         val: stats.ditolak,      icon: XCircle,    color: 'text-red-500',    bg: 'bg-red-50',    border: 'border-red-100' },
-    { label: 'Total Berita',    val: stats.berita,       icon: BookOpen,   color: 'text-purple-600', bg: 'bg-purple-50', border: 'border-purple-100' },
   ]
 
   return (
@@ -95,7 +94,7 @@ export default async function AdminPage() {
         </div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           {statCards.map(({ label, val, icon: Icon, color, bg, border }) => (
             <div key={label} className={`${bg} border ${border} rounded-2xl p-4 text-center hover:shadow-md transition-all hover:-translate-y-0.5`}>
               <Icon className={`h-5 w-5 ${color} mx-auto mb-2`} />
@@ -116,16 +115,6 @@ export default async function AdminPage() {
               <p className="text-sm text-gray-500">Verifikasi, terima, atau tolak</p>
             </div>
             <ArrowRight className="h-5 w-5 text-gray-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
-          </Link>
-          <Link href="/admin/berita" className="group bg-white rounded-2xl border border-gray-100 p-5 flex items-center gap-4 hover:shadow-md hover:border-purple-200 transition-all">
-            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center group-hover:bg-purple-700 transition-colors">
-              <BookOpen className="h-6 w-6 text-purple-700 group-hover:text-white transition-colors" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="font-bold text-gray-900">Kelola Berita</p>
-              <p className="text-sm text-gray-500">Tambah dan edit artikel sekolah</p>
-            </div>
-            <ArrowRight className="h-5 w-5 text-gray-300 group-hover:text-purple-600 group-hover:translate-x-1 transition-all" />
           </Link>
           <Link href="/admin/galeri" className="group bg-white rounded-2xl border border-gray-100 p-5 flex items-center gap-4 hover:shadow-md hover:border-orange-200 transition-all">
             <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center group-hover:bg-orange-600 transition-colors">

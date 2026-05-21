@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ArrowRight, Users, Trophy, BookOpen, Star, Calendar, ChevronRight } from 'lucide-react'
+import { HeroCarousel } from '@/components/hero-carousel'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -88,21 +89,22 @@ export default async function HomePage() {
 
         <div className="container mx-auto px-8 py-16 sm:py-24 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in-up">
+            {/* Text — centered */}
+            <div className="text-center">
               {ppdb && (
-                <div className="flex justify-center">
-                  <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur rounded-full px-4 py-2 text-sm mb-6 border border-white/20">
+                <div className="flex justify-center mb-6">
+                  <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur rounded-full px-4 py-2 text-sm border border-white/20">
                     <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                     PPDB {ppdb.tahun_ajaran} Sedang Dibuka
                   </div>
                 </div>
               )}
-              <h1 className="text-center text-4xl sm:text-5xl md:text-5xl font-black leading-tight mb-6">
+              <h1 className="text-4xl sm:text-5xl font-black leading-tight mb-6">
                 Selamat Datang di
                 <br />
                 <span className="text-yellow-400">Haya Bina Insani</span>
               </h1>
-              <p className="text-center text-lg sm:text-xl text-green-100 mb-8 max-w-xl leading-relaxed">
+              <p className="text-lg sm:text-xl text-green-100 mb-8 leading-relaxed">
                 Sekolah unggulan berakreditasi A yang berkomitmen mencetak
                 generasi beriman, berprestasi, dan berdaya saing global.
               </p>
@@ -125,23 +127,10 @@ export default async function HomePage() {
                 </Button>
               </div>
             </div>
-            {/* Hero image */}
-            <div className="hidden lg:block relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-green-950/50 border border-white/10">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=700&q=80"
-                  alt="Suasana sekolah Haya Bina Insani"
-                  className="w-full h-80 object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-green-900/40 to-transparent" />
-              </div>
-              {/* Floating badge */}
-              <div className="absolute -bottom-4 -left-4 bg-yellow-400 text-green-900 rounded-2xl px-5 py-3 shadow-xl text-center">
-                <p className="text-xs font-semibold">Akreditasi</p>
-                <p className="text-2xl font-black leading-tight">A</p>
-                <p className="text-xs font-semibold">Unggul</p>
-              </div>
+
+            {/* Carousel — kanan pada lg+, tersembunyi di mobile */}
+            <div className="hidden lg:block relative pb-4">
+              <HeroCarousel />
             </div>
           </div>
         </div>
